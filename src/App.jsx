@@ -43,8 +43,6 @@ function App() {
         <Route path='/resetpass' Component={ResetPass}/>
         <Route path='/home' Component={Home}/>
         <Route path='/productlist' Component={ProductList}/>
-        
-
       </Routes>
       
     </div>
