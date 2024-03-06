@@ -1,0 +1,15 @@
+.navbar{
+    width: 200px;
+    height: 100vh;
+    background-color: rgb(66, 38, 131);
+    color: white;
+}
+.nav-options{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 20px;
+    margin: 20px;
+    background-color: #8369c0;
+}

@@ -1,0 +1,38 @@
+.login-body{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(78, 75, 75);
+    /* background-image: url("https://source.unsplash.com/random"); */
+    background-size: cover;
+  } 
+  #login-container{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 30px;
+    left: 440px;
+    width: 400px;
+    height: 500px;
+    box-shadow: rgb(245, 245, 245) 0px 5px 15px;
+    background:whitesmoke;
+    opacity: 0.8;
+    flex-direction: column;
+    border-radius: 7px;
+    }
+    #h{
+      position: relative;
+      top: 10px;
+    }
+    #login-user,#login-email,#login-password,#login-confirm-pass{
+      width: 250px;
+      height: 15px;
+    }
+    #login-password,#login-confirm-pass{
+      width: 220px;
+    }
+  
+  
+    
