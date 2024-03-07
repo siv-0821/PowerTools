@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import DataContext from '../../DataContext';
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
+import { Card, CardContent, Typography } from '@mui/material';
 
 function Home() {
   const {setShowNavbar } = useContext(DataContext);
@@ -23,7 +24,11 @@ function Home() {
       {productData.map((product)=>{
         return(
           <div className='product-card'>
-              
+              <Card>
+                <CardContent>
+                  <Typography variant='h5'>Hi</Typography>
+                </CardContent>
+              </Card>
           </div>
         )
       })}
