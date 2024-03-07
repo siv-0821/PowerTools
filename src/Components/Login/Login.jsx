@@ -4,9 +4,18 @@ import { Link } from 'react-router-dom';
 import './Login.css';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { TextField, Button, Typography, IconButton, InputAdornment } from '@mui/material';
 import axios from 'axios';
-
+import styled from '@emotion/styled';
+const MyTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiInputBase-root': {
+    '&.Mui-focused fieldset': {
+      borderColor: '#27374d', // Focused border color
+    },
+  },
+}));
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -59,16 +68,18 @@ function Login() {
                 <Typography variant="h4" id="login-txt" gutterBottom>
                     Login
                 </Typography>
-
-                <TextField
+                <div className='underline'></div>
+                <div className='field'>
+                <MyTextField
                     id="login-email"
                     autoComplete='off'
                     label="Email"
                     variant="outlined"
+                    InputProps={{startAdornment:(<MailOutlineIcon style={{ marginRight: "8px" }}/>)}}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <TextField
+                <MyTextField
                     id="login-password"
                     autoComplete='off'
                     label="Password"
@@ -77,8 +88,9 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     InputProps={{
+                        startAdornment:(<VpnKeyIcon style={{ marginRight: "8px" }}/>),
                         endAdornment: (
-                            <InputAdornment position="center">
+                            <InputAdornment position="end" className='eye'>
                                 <IconButton
                                     aria-label="toggle password visibility"
                                     onClick={handleClickShowPassword}
@@ -91,6 +103,8 @@ function Login() {
                         ),
                     }}
                 />
+                </div>
+                
                 <Button id='login-button' variant="contained" color="primary" onClick={handleLogin}>
                     Login
                 </Button>
