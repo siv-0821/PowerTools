@@ -31,6 +31,7 @@ import ResetPass from './Components/ResetPass/ResetPass'
 import DataContext from './DataContext'
 import Home from './Components/Home/Home'
 import ProductList from './Components/ProductList/ProductList'
+import OrderList from './Components/OrderList/OrderList'
 function App() {
   const{role}=useContext(DataContext);
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path='/resetpass' Component={ResetPass}/>
         <Route path='/home' Component={Home}/>
         <Route path='/productlist' Component={ProductList}/>
+        <Route path='/orderlist' Component={OrderList}/>
       </Routes>
       
     </div>
