@@ -86,7 +86,7 @@ function Signup() {
       <div className='login-body'>
         <div id="login-container">
           <Typography variant="h4" id="signup-head" gutterBottom>
-            Sign Up
+            Sign up
           </Typography>
           
           <div className='underline'></div>

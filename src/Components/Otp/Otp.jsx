@@ -4,7 +4,14 @@ import Swal from 'sweetalert2';
 import { Typography, Button } from '@mui/material';
 import { MuiOtpInput } from 'mui-one-time-password-input';
 import axios from 'axios';
-
+import styled from '@emotion/styled';
+const MyTextField = styled(MuiOtpInput)(({ theme }) => ({
+  '& .MuiInputBase-root': {
+    '&.Mui-focused fieldset': {
+      borderColor: '#27374d', // Focused border color
+    },
+  },
+}));
 function Otp() {
     const [otp, setOtp] = useState('');
     const [resendTime, setResendTime] = useState(60); 
@@ -62,23 +69,25 @@ function Otp() {
     return (
       <div id='otp-body'>
         <div id='otp'>
-          <Typography variant='h4'>Verify</Typography>
-  
+         <Typography variant='h4'>Verify OTP</Typography>
           <Typography variant='h5'>
-            Your code was sent to your via email
+            OTP was sent to your Mail
           </Typography>
-  
-          <MuiOtpInput
+          <div className="field">
+          <MyTextField
             id='otp-input'
             value={otp}
             length={6}
             numInputs={4}
             onChange={handleChange}
           />
+          </div>
+          
   
           <Button
             variant='contained'
             color='primary'
+            id="btn"
             onClick={handleVerify} // Call handleVerify on Verify button click
           >
             Verify
@@ -88,6 +97,7 @@ function Otp() {
             <Button
               variant='outlined'
               color='primary'
+              id="resend"
               onClick={handleResend}
             >
               Resend OTP

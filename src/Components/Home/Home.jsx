@@ -18,7 +18,7 @@ function Home() {
     
   return (
     <div>
-     <Navbar/>
+     <Navbar id="nav"/>
      <div className='home-page'>
       {productData.map((product)=>{
         return(
