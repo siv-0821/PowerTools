@@ -3,7 +3,16 @@ import './ResetPass.css'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
+import styled from '@emotion/styled';
+const MyTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiInputBase-root': {
+    '&.Mui-focused fieldset': {
+      borderColor: '#27374d', // Focused border color
+    },
+  },
+}));
 function ResetPass() {
     const [password, setPassword] = useState()
     const [resetpassword, setResetpassword] = useState()
@@ -51,22 +60,29 @@ function ResetPass() {
       <div id='reset-body'>
         <div id='reset'>
           <Typography variant='h5'>Reset your Password</Typography>
-          <TextField
+          <div className="underline"></div>
+          <div className="field">
+          <MyTextField
             id=''
             label='New Password'
             variant='outlined'
+            InputProps={{startAdornment:(<VpnKeyIcon style={{ marginRight: "8px" }}/>)}}
+
             value={password}
             onChange={(e) => setPassword(e.target.value)} />
   
-          <TextField
+          <MyTextField
             id=''
-            label='Reset Password'
+            label='Confirm Password'
             variant='outlined'
             type='password'
+            InputProps={{startAdornment:(<VpnKeyIcon style={{ marginRight: "8px" }}/>)}}
+
             value={resetpassword}
             onChange={(e) => setResetpassword(e.target.value)}
           />
-          <Button variant='contained' onClick={reset} color='primary'>Change</Button>
+          </div>
+          <Button variant='contained' onClick={reset} color='primary' id="btn">Change</Button>
         </div>
       </div>
     )

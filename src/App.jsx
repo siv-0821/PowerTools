@@ -32,6 +32,8 @@ import DataContext from './DataContext'
 import Home from './Components/Home/Home'
 import ProductList from './Components/ProductList/ProductList'
 import OrderList from './Components/OrderList/OrderList'
+import Contact from './Components/Contact/Contact'
+import ContactDetails from "./Components/ContactDetails/ContactDetails"
 function App() {
   const{role}=useContext(DataContext);
   return (
@@ -45,6 +47,8 @@ function App() {
         <Route path='/home' Component={Home}/>
         <Route path='/productlist' Component={ProductList}/>
         <Route path='/orderlist' Component={OrderList}/>
+        <Route path='/contact' Component={Contact}/>
+        <Route path='/contactdetails' Component={ContactDetails}/>
       </Routes>
       
     </div>
