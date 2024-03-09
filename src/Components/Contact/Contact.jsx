@@ -32,7 +32,6 @@ function Contact() {
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
   };
-
   const handleSendClick = () => {
     if (!name || !email || !message) {
       Swal.fire({
@@ -40,6 +39,7 @@ function Contact() {
         title: 'Oops...',
         text: 'Please fill in all fields!',
       });
+      console.log(name,email,message)
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
