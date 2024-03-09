@@ -72,6 +72,18 @@ function Contact() {
   return (
     <div id="contact-body">
       <div id="contact">
+        <Typography variant='h5'>Contact us</Typography>
+        <div className="underline"></div>
+        <div className="field">
+          <Typography variant='h6' align='left' className='head'>Address :</Typography>
+          <Typography variant='h7' align='left' className='detail'>No. 174, T.B. Road, Thiuchendur  628-215.</Typography>
+          <Typography variant='h6' align='left' className='head'>Contact Number :</Typography>
+          <Typography variant='h7'  align='left' className='detail'>+91 9487842495</Typography>
+          <Typography variant='h6'  align='left' className='head'>E-Mail :</Typography>
+          <Typography variant='h7'  align='left' className='detail'>rameshandramesh11@gmail.com</Typography>
+        </div>
+      </div>
+      <div id="contact">
         <Typography variant='h5'>Get in Touch with Us</Typography>
         <div className="underline"></div>
         <div className="field">
@@ -91,7 +103,7 @@ function Contact() {
             value={email}
             onChange={handleEmailChange}
           />
-          <TextField
+          <MyTextField
             id="outlined-multiline-flexible"
             InputProps={{ startAdornment: (<ChatBubbleOutlineIcon style={{ marginRight: "8px" }} />) }}
             label="Message"
