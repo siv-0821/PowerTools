@@ -1,8 +1,6 @@
-.navbar{
-    width: 200px;
-    height: 100vh;
-    background-color: rgb(66, 38, 131);
-    color: white;
+.nav{
+    display: flex;
+    align-items: center;
 }
 .nav-options{
     list-style: none;
@@ -12,4 +10,26 @@
     border-radius: 20px;
     margin: 20px;
     background-color: #8369c0;
+}
+#back{
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.5s ;
+}
+#back:hover{
+    color: #1976d2;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 6px;
+}
+#title{
+    margin-left: 20px;
+    font-size: 25px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+#upload-head{
+    margin-left: 500px;
+    margin-top: 10px;
 }
