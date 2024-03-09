@@ -48,7 +48,6 @@ function Login() {
             Swal.fire('Success!', 'Login successful!', 'success');
             setEmail('');
             setPassword('');
-            // Optionally, you can redirect the user to another page upon successful login
             //window.location.href = '/login';
         } catch (error) {
             Swal.fire('Error!', error.message || 'Something went wrong!', 'error');
