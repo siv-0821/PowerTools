@@ -11,7 +11,7 @@ function ContactDetails() {
     return (
         <>
             <NavBar value='Newsletters' />
-            <div className="body">
+            <div className="contactdetail-body">
 
                 <div className="messages">
                     <Accordion className="no">
