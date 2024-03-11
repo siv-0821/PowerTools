@@ -21,19 +21,8 @@ function Contact() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleMessageChange = (event) => {
-    setMessage(event.target.value);
-  };
-
-  const handleSendClick = () => {
+  const handleSend = async () => {
     if (!name || !email || !message) {
       Swal.fire({
         icon: 'error',
