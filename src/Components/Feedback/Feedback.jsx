@@ -59,9 +59,7 @@ function Feedback() {
       icon: 'success',
       title: 'Feedback Submitted',
       text: 'Thank you for your feedback!',
-    });
-
-  
+    });  
     setName('');
     setEmail('');
     setMobile('');
@@ -87,7 +85,7 @@ function Feedback() {
 
   return (
     <>
-      <div className="body">
+      <div className="feedback-body">
         <div className="feedback">
           <Typography variant="h5">Submit your Feedback about Our Services</Typography>
           <div className="underline"></div>
