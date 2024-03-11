@@ -4,6 +4,7 @@ import Rating from '@mui/material/Rating';
 import * as React from 'react'
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import PersonIcon from '@mui/icons-material/Person';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
@@ -39,7 +40,13 @@ function Feedback(){
             label="E-Mail"
             variant="outlined"
             InputProps={{ startAdornment: (<MailOutlineIcon style={{ marginRight: "8px" }} />) }}
-
+          />
+          <MyTextField
+            id="outlined-basic"
+            label="Mobile Number"
+            type='number'
+            variant="outlined"
+            InputProps={{ startAdornment: (<PhoneInTalkIcon style={{ marginRight: "8px" }} />) }}
           />
           <MyTextField
             id="outlined-multiline-flexible"
@@ -48,7 +55,7 @@ function Feedback(){
             multiline
             maxRows={4}
           />
-          <Typography component="legend">Feedback</Typography>
+          <Typography component="legend">Ratings for Our Services</Typography>
         <Rating className='rating'
             name="simple-controlled"
             value={value}
