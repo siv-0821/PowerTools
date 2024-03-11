@@ -73,6 +73,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
  #forget-link {
    display: block;
+   text-decoration: none;
    color: #1976D2;
    margin-top: 10px;
  }
