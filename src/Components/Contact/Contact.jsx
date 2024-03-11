@@ -36,42 +36,23 @@ function Contact() {
       Swal.fire('Error!', 'Invalid email format', 'error');
       return;
     }
-<<<<<<< Updated upstream
-
-    console.log(name);
-=======
-     axios.post('/newsletter/newsletter', { name, email, message })
-      .then((response) => {
-         Swal.fire({
-           icon: 'success',
-           title: 'Success!',
-           text: 'Message sent successfully!',
-         });
-       })
-       .catch((error) => {
-         Swal.fire({
-           icon: 'error',
-           title: 'Oops...',
-           text: 'Something went wrong!',
-         });
-       });
-  };
->>>>>>> Stashed changes
-
-
     try {
       const response = await axios.post('http://localhost:9000/newsletter/newsletter', { name, email, message });
       if (!response.status === 200) {
         throw new Error(response.data.message);
       }
-      Swal.fire('Success!', 'Signup successful!', 'success');
+      Swal.fire('Success!', 'Submitted Successfully!', 'success');
     }
     catch (error) {
       Swal.fire('Error!', error.message || 'Something went wrong!', 'error');
     }
-  }
+    setEmail('')
+setName('')
+setMessage('')
 
+  };
 
+  
 
 
 return (
@@ -123,6 +104,6 @@ return (
 
   </div>
 );
-  }
+}
 
 export default Contact;
