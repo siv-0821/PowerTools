@@ -109,7 +109,7 @@ function Login() {
                 </Button>
 
                 <Typography variant="body2" style={{ marginTop: '10px' }}>
-                    <Link id="forget-link" to='/forget' style={{ cursor: 'pointer', color: '#1976D2' }}>
+                    <Link id="forget-link" to='/forget' style={{ cursor: 'pointer', color: '#1976D2' ,textDecoration:'none'}}>
                         Forgot Password?
                     </Link>
                 </Typography>

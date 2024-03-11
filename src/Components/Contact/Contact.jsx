@@ -36,8 +36,27 @@ function Contact() {
       Swal.fire('Error!', 'Invalid email format', 'error');
       return;
     }
+<<<<<<< Updated upstream
 
     console.log(name);
+=======
+     axios.post('/newsletter/newsletter', { name, email, message })
+      .then((response) => {
+         Swal.fire({
+           icon: 'success',
+           title: 'Success!',
+           text: 'Message sent successfully!',
+         });
+       })
+       .catch((error) => {
+         Swal.fire({
+           icon: 'error',
+           title: 'Oops...',
+           text: 'Something went wrong!',
+         });
+       });
+  };
+>>>>>>> Stashed changes
 
 
     try {
