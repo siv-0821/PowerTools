@@ -1,4 +1,4 @@
-import './Feedback.css'
+import './Feedback.css';
 import { Button, TextField, Typography } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import { useState } from 'react';
@@ -119,4 +119,5 @@ function Feedback() {
     </>
   )
 }
-export default Feedback
+
+export default Feedback;

@@ -30,7 +30,7 @@ function ContactDetails() {
     return (
         <>
             <NavBar value='Newsletters' />
-            <div className="body" >
+            <div className="contactdetailsbody" >
                 <div className="messages">
                     {rows.map((row, index) => (
                         <Accordion className="no" key={`id${index}`}>
