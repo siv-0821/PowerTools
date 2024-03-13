@@ -40,11 +40,7 @@ function Login() {
 
         try {
             const response = await axios.post('http://localhost:9000/auth/login', { email, password });
-
-            if (!response.status === 200) {
-                throw new Error(response.data.message);
-            }
-
+            
             Swal.fire('Success!', 'Login successful!', 'success');
             setEmail('');
             setPassword('');
@@ -115,7 +111,7 @@ function Login() {
                 </Typography>
 
                 <Typography id="signup" variant="body2" style={{ marginTop: '10px', color: 'black' }}>
-                    Don't have an account?{' '}
+                    Don't have an account?
                     <Link id="siup" to='/signup' style={{ textDecoration: 'none', color: '#1976D2' }}>
                         Sign Up
                     </Link>

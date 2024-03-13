@@ -30,7 +30,7 @@ function Otp() {
           setOtp('');
           Swal.fire({title:"success",text:response.data.message,icon:"success",timer:2000})
           localStorage.setItem("resetToken",response.data.resetToken)
-          window.location.href = '/resetpass'; // Assuming '/otp' is the route to enter OTP
+          window.location.href ='resetpass' // Assuming '/otp' is the route to enter OTP
       } catch (error) {
         
         // Swal.fire('Error!', 'Failed to submit form', 'error');
