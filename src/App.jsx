@@ -36,13 +36,15 @@ import OrderList from './Components/OrderList/OrderList'
 import Contact from './Components/Contact/Contact'
 import ContactDetails from "./Components/ContactDetails/ContactDetails"
 import Feedback from './Components/Feedback/Feedback'
+import Auth from './Auth/Auth'
 function App() {
   const { role } = useContext(DataContext);
   return (
     <div>
       <Routes>
-        <Route path='/' Component={Login} />
-        <Route path='/forget' Component={ForgetPass}>
+        <Route Component={Auth}>
+          <Route path='/' Component={Login} />
+          <Route path='/forget' Component={ForgetPass} />
           <Route path='/otp' Component={Otp} />
           <Route path='/resetpass' Component={ResetPass} />
         </Route>
@@ -54,7 +56,7 @@ function App() {
         <Route path='/contactdetails' Component={ContactDetails} />
         <Route path='/feedback' Component={Feedback} />
       </Routes>
-    </div>
+    </div >
   )
 }
 
