@@ -43,8 +43,8 @@ function App() {
       <Routes>
         <Route path='/' Component={Login} />
         <Route path='/forget' Component={ForgetPass}>
-          <Route path='otp' Component={Otp} />
-          <Route path='resetpass' Component={ResetPass} />
+          <Route path='/otp' Component={Otp} />
+          <Route path='/resetpass' Component={ResetPass} />
         </Route>
         <Route path='/signup' Component={Signup} />
         <Route path='/home' Component={Home} />
