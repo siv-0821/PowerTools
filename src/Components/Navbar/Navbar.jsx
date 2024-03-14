@@ -8,8 +8,11 @@ const Navbar=(props)=> {
     <div >
       <AppBar >
         <Toolbar className='nav'>
+        <div className='shop'>
         <ArrowBackIcon id="back" />
-          <Typography variant='h6' gutterBottom id="title">R&R POWER TOOLS</Typography>
+        <Typography variant='h6' gutterBottom id="title">R&R POWER TOOLS</Typography>
+        </div>
+        
         <Typography  variant='h5' gutterBottom id="upload-head">{props.value}</Typography>
         
         </Toolbar>

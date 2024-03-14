@@ -1,5 +1,11 @@
+.shop{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
 .nav{
     display: flex;
+    gap: 30%;
     align-items: center;
 }
 .nav-options{
@@ -30,6 +36,7 @@
     font-weight: bold;
 }
 #upload-head{
-    margin-left: 500px;
+    display: flex;
+    gap: 20%;
     margin-top: 10px;
 }
