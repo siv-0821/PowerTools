@@ -3,7 +3,10 @@ import Navbar from "../Navbar/Navbar";
 function FeedbackDetails(){
     return(
         <>
-        <Navbar/>
+        <Navbar value='Feedbacks' />
+        <div className="feedbackdetailsbody">
+            <div className="message"></div>
+        </div>
         </>
     )
 }
