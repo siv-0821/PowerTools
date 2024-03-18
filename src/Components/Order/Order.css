@@ -1,0 +1,28 @@
+.orderBody {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    gap: 100px;
+}
+
+.mail {
+    position: absolute;
+    top: 150px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 16px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.1); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 50px;
+    width: 850px;
+    border-radius: 8px;
+    gap: 10px;
+    text-align: center;
+}
+
+#send {
+    width: 10%;
+    margin-top: 25px;
+}
