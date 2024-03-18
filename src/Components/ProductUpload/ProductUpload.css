@@ -1,0 +1,19 @@
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.product-con{
+    display: grid;
+    place-content: center;
+    gap: 15px;
+}
+.pr-name{
+    width: 700px;
+}
+.action{
+   display: flex;
+   justify-content: center;
+   
+}
