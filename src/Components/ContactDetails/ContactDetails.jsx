@@ -10,10 +10,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 
-
 function ContactDetails() {
     const [rows, setRows] = useState([])
-
     useEffect(() => {
         const getdata = async () => {
             try {
@@ -40,13 +38,13 @@ function ContactDetails() {
                                 id={`panel${index + 1}-header`}
                             >
                                 <Typography variant="h7" className="from">
-                                    <div>{row.name} </div>
-                                    <div className="mail">From:{row.email} </div>
+                                    <div><b>{row.name} </b></div>
+                                    <div ><b>From : </b>{row.email} </div>
                                     <div>{row.createdAt} </div>
                                 </Typography>
                             </AccordionSummary>
-                            <AccordionDetails>
-                                {row.message}
+                            <AccordionDetails style={{textAlign:"left"}}>
+                                <b>Message : </b>{row.message}
                             </AccordionDetails>
                         </Accordion>
                     ))}
