@@ -37,9 +37,9 @@ import Contact from './Components/Contact/Contact'
 import ContactDetails from "./Components/ContactDetails/ContactDetails"
 import Feedback from './Components/Feedback/Feedback'
 import Auth from './Auth/Auth'
-import FeedbackDetails from './Components/FeedbackDetails/FeedbackDetails'
 import ProductUpload from './Components/ProductUpload/ProductUpload'
 import Overview from './Components/Overview/Overview'
+import FeedbackDetails from './Components/FeedbackDetails/FeedbackDetails'
 function App() {
   const { role } = useContext(DataContext);
   return (
@@ -58,6 +58,8 @@ function App() {
         <Route path='/contact' Component={Contact} />
         <Route path='/contactdetails' Component={ContactDetails} />
         <Route path='/feedback' Component={Feedback} />
+        <Route path='/productupload' Component={ProductUpload} />
+        <Route path='/overview/:id' Component={Overview} />
         <Route path='/feedbackdetails' Component={FeedbackDetails} />
       </Routes>
     </div >

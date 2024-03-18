@@ -28,9 +28,10 @@ function Home() {
       <Navbar id="nav" />
       <div className='home-page'>
         <div className='product-card'>
-          <Overview>
+          
           {cardData.map(card => (
-            <Card key={card.id}>
+            <Overview>
+              <Card key={card.id}>
               <CardMedia
                 component="img"
                 height="200"
@@ -46,8 +47,9 @@ function Home() {
                 <Button variant='small'>Buy</Button>
               </CardActions>
             </Card>
+            </Overview>
           ))}
-          </Overview>
+          
         </div>
       </div>
     </div>
