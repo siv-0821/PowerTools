@@ -1,0 +1,41 @@
+#edit{
+    color: green;
+    cursor: pointer;
+}
+#delete{
+    color: red;
+    cursor: pointer;
+}
+.orderListBody{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    gap: 100px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.orderList{
+    position: relative;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 5px solid rgba(117, 112, 112, 0.3); 
+        padding: 50px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+       width: 90vw;
+       gap: 10px;
+       height: 80vh;
+       text-align: center;
+       overflow-y: auto;
+}
+.add{
+    position: relative;
+    top: -20px;
+    right: 30px;
+}

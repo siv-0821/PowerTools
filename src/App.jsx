@@ -41,6 +41,7 @@ import ProductUpload from './Components/ProductUpload/ProductUpload'
 import Overview from './Components/Overview/Overview'
 import FeedbackDetails from './Components/FeedbackDetails/FeedbackDetails'
 import Order from './Components/Order/Order'
+import Address from './Components/Address/Address'
 function App() {
   const { role } = useContext(DataContext);
   return (
@@ -63,6 +64,7 @@ function App() {
         <Route path='/overview/:id' Component={Overview} />
         <Route path='/feedbackdetails' Component={FeedbackDetails} />
         <Route path='/order' Component={Order}/>
+        <Route path='/address' Component={Address}/>
       </Routes>
     </div >
   )
