@@ -8,7 +8,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import Navbar from '../Navbar/Navbar'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./ProductList.css"
@@ -93,7 +92,7 @@ function ProductList() {
   }, []);
   return (
     <div>
-      <Navbar value="Product List" />
+      
       <div className="productListBody">
         <div className='productList'>
           <Link to="/productupload">

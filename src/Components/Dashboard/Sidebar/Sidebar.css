@@ -5,6 +5,7 @@
 }
 .side-body{
     display: flex;
+    height: 100vh;
 }
 .sidebar{
     background:rgb(0, 0, 255);

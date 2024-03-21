@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './OrderList.css'
-import Navbar from "../Navbar/Navbar"
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -47,7 +47,7 @@ function OrderList() {
   
   return (
     <>
-      <Navbar value="Order List" />
+      
       <div className='orderListBody'>
         <div className='orderList'>
 

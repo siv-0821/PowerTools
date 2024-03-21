@@ -1,4 +1,3 @@
-import NavBar from "../Navbar/Navbar"
 import './ContactDetails.css'
 import { useEffect, useState } from 'react';
 import Accordion from '@mui/material/Accordion';
@@ -27,7 +26,7 @@ function ContactDetails() {
 
     return (
         <>
-            <NavBar value='Newsletters' />
+            
             <div className="contactdetailsbody" >
                 <div className="messages">
                     {rows.map((row, index) => (

@@ -1,4 +1,3 @@
-import NavBar from "../Navbar/Navbar";
 import './FeedbackDetails.css';
 import { useEffect, useState } from 'react';
 import Accordion from '@mui/material/Accordion';
@@ -26,7 +25,7 @@ function FeedbackDetails() {
 
     return (
         <>
-            <NavBar value='Feedbacks' />
+            
             <div className="feedbackdetailsbody">
                 <div className="feedbacks">
                     {rows.map((row, index) => (
