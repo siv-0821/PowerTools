@@ -6,7 +6,7 @@ import Home from './Components/Home/Home';
 
 function App() {
   const {showNavbar,navigate ,setShowNavbar}  = useContext(DataContext);
-  
+
   return (
     <div>
 
@@ -41,28 +41,34 @@ import ProductUpload from './Components/ProductUpload/ProductUpload'
 import Overview from './Components/Overview/Overview'
 import FeedbackDetails from './Components/FeedbackDetails/FeedbackDetails'
 import Order from './Components/Order/Order'
+import Dashboard from './Components/Dashboard/Dashboard'
+import Users from './Components/Users/Users'
 function App() {
   const { role } = useContext(DataContext);
   return (
     <div>
       <Routes>
-        <Route Component={Auth}>
-          <Route path='/' Component={Login} />
-          <Route path='forget' Component={ForgetPass} />
-          <Route path='otp' Component={Otp} />
-          <Route path='resetpass' Component={ResetPass} />
-        </Route>
-        <Route path='/signup' Component={Signup} /> 
-        <Route path='/home' Component={Home} />
-        <Route path='/productlist' Component={ProductList} />
-        <Route path='/orderlist' Component={OrderList} />
+        <Route path='/signup' Component={Signup} />
+        <Route path='/' Component={Home} />
         <Route path='/contact' Component={Contact} />
-        <Route path='/contactdetails' Component={ContactDetails} />
         <Route path='/feedback' Component={Feedback} />
-        <Route path='/productupload' Component={ProductUpload} />
         <Route path='/overview/:id' Component={Overview} />
-        <Route path='/feedbackdetails' Component={FeedbackDetails} />
-        <Route path='/order' Component={Order}/>
+        <Route Component={Auth}>
+          <Route path='*' Component={Login} />
+          <Route path='/forget' Component={ForgetPass} />
+          <Route path='/otp' Component={Otp} />
+          <Route path='/resetpass' Component={ResetPass} />
+        </Route>
+
+        <Route path='/dashboard' Component={Dashboard} >
+          <Route path=''Component={Users}/>
+          <Route path='productlist' Component={ProductList} />
+          <Route path='orderlist' Component={OrderList} />
+          <Route path='productupload' Component={ProductUpload} />
+          <Route path='feedbackdetails' Component={FeedbackDetails} />
+          <Route path='contactdetails' Component={ContactDetails} />
+          <Route path='order' Component={Order} />
+        </Route>
       </Routes>
     </div >
   )

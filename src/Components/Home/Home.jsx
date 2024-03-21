@@ -1,36 +1,26 @@
-import React, { useContext } from 'react';
-import DataContext from '../../DataContext';
-import './Home.css';
-import Navbar from '../Navbar/Navbar';
+import './Home.css'
+import Navbar from '../Navbar/Navbar'
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
-import Overview from '../Overview/Overview';
+import { Link } from 'react-router-dom'
 
 function Home() {
-  const { setShowNavbar } = useContext(DataContext);
-
-  // Assuming you have some data for multiple cards
+    
   const cardData = [
     { id: 1, title: 'Card 1', image: 'https://source.unsplash.com/random', desc: 'Description for Card 1' },
     { id: 2, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
-    { id: 3, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
-    { id: 4, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
-    { id: 5, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
-    { id: 6, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
-    { id: 7, title: 'Card 3', image: 'https://source.unsplash.com/random', desc: 'Description for Card 3' }
-    // Add more card data as needed
-  ];
+    { id: 3, title: 'Card 3', image: 'https://source.unsplash.com/random', desc: 'Description for Card 3' },
+    { id: 4, title: 'Card 4', image: 'https://source.unsplash.com/random', desc: 'Description for Card 4' },
+    { id: 5, title: 'Card 5', image: 'https://source.unsplash.com/random', desc: 'Description for Card 5' },
+    { id: 6, title: 'Card 6', image: 'https://source.unsplash.com/random', desc: 'Description for Card 6' },
+    { id: 7, title: 'Card 7', image: 'https://source.unsplash.com/random', desc: 'Description for Card 7' }
 
-  setShowNavbar(true);
-
+  ]
   return (
     <div className='home'>
-      <Navbar id="nav" />
+     <Navbar/>
       <div className='home-page'>
-        <div className='product-card'>
-          
+        <div className='product-card'>          
           {cardData.map(card => (
-            <Overview>
               <Card key={card.id}>
               <CardMedia
                 component="img"
@@ -47,13 +37,11 @@ function Home() {
                 <Button variant='small'>Buy</Button>
               </CardActions>
             </Card>
-            </Overview>
           ))}
-          
         </div>
       </div>
     </div>
-  );
+  )
 }
+export default Home
 
-export default Home;

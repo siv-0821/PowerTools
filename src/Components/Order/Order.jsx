@@ -1,5 +1,4 @@
 import './Order.css'
-import Navbar from '../Navbar/Navbar'
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { Button, TextField, Typography } from '@mui/material';
@@ -15,7 +14,6 @@ const MyTextField = styled(TextField)(({ theme }) => ({
 function Order() {
     return (
         <>
-            <Navbar value="Order Products" />
             <div className="orderBody">
                 <div className="mail">
                     <div className="field">
@@ -34,15 +32,15 @@ function Order() {
                         />
                         <MyTextField
                             id="outlined-multiline-flexible"
-                            InputProps={{ startAdornment: (<ChatBubbleOutlineIcon style={{ marginRight: "8px", height:"100px" }} />) }}
+                            InputProps={{ startAdornment: (<ChatBubbleOutlineIcon style={{ marginRight: "8px", height: "100px" }} />) }}
                             label="Message"
                             multiline
                             maxRows={4}
                         />
                     </div>
                     <Button id='send' variant="contained" color="primary">
-                    Send
-                </Button>
+                        Send
+                    </Button>
                 </div>
             </div>
         </>
