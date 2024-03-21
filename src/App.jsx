@@ -61,7 +61,7 @@ function App() {
         </Route>
 
         <Route path='/dashboard' Component={Dashboard} >
-          <Route path=''Component={Users}/>
+          <Route path=''Component={Users} />
           <Route path='productlist' Component={ProductList} />
           <Route path='orderlist' Component={OrderList} />
           <Route path='productupload' Component={ProductUpload} />

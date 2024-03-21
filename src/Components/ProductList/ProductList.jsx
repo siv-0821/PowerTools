@@ -1,23 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Card, CardActions, CardContent, Button, Modal, TextField } from '@mui/material';
+import { Box, Button, Modal, TextField } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import Navbar from '../Navbar/Navbar'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import "./ProductList.css"
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
-//import Navbar from '../Navbar/Navbar';
+import { tableCellClasses } from '@mui/material/TableCell';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
 
 function ProductList() {
   const [rows, setRows] = useState([]);
   const [editProduct, setEditProduct] = useState(null);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [editedFields, setEditedFields] = useState({});
 
   const fetchData = async () => {
     try {
@@ -35,8 +49,9 @@ function ProductList() {
   const handleEdit = (product) => {
     setEditProduct(product);
     setOpenEditModal(true);
+    setEditedFields({ ...product });
   };
-
+  //Edit & Delete Modal Backdrop
   const handleEditDelete = async (productId) => {
     try {
       const response = await axios.delete(`http://localhost:9000/product/${productId}`);
@@ -54,7 +69,7 @@ function ProductList() {
 
   const handleEditSave = async () => {
     try {
-      const response = await axios.put(`http://localhost:9000/product/${editProduct._id}`, editProduct);
+      const response = await axios.put(`http://localhost:9000/product/${editProduct._id}`, editedFields);
       if (response.status === 200) {
         setOpenEditModal(false);
         fetchData();
@@ -66,99 +81,113 @@ function ProductList() {
       Swal.fire('Error!', error.message || 'Something went wrong!', 'error');
     }
   };
-
-  const handleEditCancel = () => {
-    setEditProduct(null);
-    setOpenEditModal(false);
+  const handleFieldChange = (e) => {
+    const { name, value } = e.target;
+    setEditedFields((prevFields) => ({
+      ...prevFields,
+      [name]: value,
+    }));
   };
-
   useEffect(() => {
     fetchData();
   }, []);
-
   return (
     <div>
-      
-      <Box width='1200px'>
-        <Card>
-          <CardContent>
-            <h3>+</h3>
-            <div>
-              <TableContainer component={Paper}>
-                <Table >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>S.No</TableCell>
-                      <TableCell >Product Name</TableCell>
-                      <TableCell >Product Model</TableCell>
-                      <TableCell >Amount</TableCell>
-                      <TableCell >Description</TableCell>
-                      <TableCell >Action</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.map((row, index) => (
-                      <TableRow key={index}>
-                        <TableCell component="th" scope="row">{index + 1}</TableCell>
-                        <TableCell align="left">{row.productName}</TableCell>
-                        <TableCell align="left">{row.productModel}</TableCell>
-                        <TableCell align="left">{row.productPrice}</TableCell>
-                        <TableCell align="left">{row.description}</TableCell>
-                        <TableCell align="left">
-                          <EditIcon onClick={() => handleEdit(row)} />
-                          <DeleteIcon onClick={() => handleEditDelete(row._id)} />
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </div>
-          </CardContent>
-          <CardActions>
-            <Link to="" style={{ textDecoration: 'none', color: 'black' }}>
-              <h3>+</h3>
-            </Link>
-          </CardActions>
-        </Card>
-      </Box>
-      <Modal open={openEditModal} onClose={handleEditCancel}>
-        <Box>
-          <h2>Edit Product</h2>
+      <Navbar value="Product List" />
+      <div className="productListBody">
+        <div className='productList'>
+          <Link to="/productupload">
+            <Button variant="contained" className='add'>Add</Button>
+          </Link>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>S.No</StyledTableCell>
+                  <StyledTableCell>Product Name</StyledTableCell>
+                  <StyledTableCell>Product Model</StyledTableCell>
+                  <StyledTableCell>Amount</StyledTableCell>
+                  <StyledTableCell>Description</StyledTableCell>
+                  <StyledTableCell>Action</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell component="th" scope="row">{index + 1}</TableCell>
+                    <TableCell align="left">{row.productName}</TableCell>
+                    <TableCell align="left">{row.productModel}</TableCell>
+                    <TableCell align="left">{row.productPrice}</TableCell>
+                    <TableCell align="left">{row.description}</TableCell>
+                    <TableCell align="left">
+                      <EditIcon id="edit" onClick={() => handleEdit(row)} />&nbsp;&nbsp;&nbsp;
+                      <DeleteIcon id="delete" onClick={() => handleEditDelete(row._id)} />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
+      <Modal
+        open={openEditModal}
+        onClose={() => setOpenEditModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'background.paper',
+          boxShadow: 24,
+          p: 4,
+        }}>
+          <h2 id="modal-modal-title">Edit Product</h2><br />
           <TextField
             label="Product Name"
-            value={editProduct?.productName || ''}
-            onChange={(e) => setEditProduct((prev) => ({ ...prev, productName: e.target.value }))}
+            name="productName"
+            value={editedFields.productName || ''}
+            onChange={handleFieldChange}
             fullWidth
-            margin="normal"
+            sx={{ mb: 3 }}
           />
           <TextField
             label="Product Model"
-            value={editProduct?.productModel || ''}
-            onChange={(e) => setEditProduct((prev) => ({ ...prev, productModel: e.target.value }))}
+            name="productModel"
+            value={editedFields.productModel || ''}
+            onChange={handleFieldChange}
             fullWidth
-            margin="normal"
+            sx={{ mb: 3 }}
           />
           <TextField
             label="Amount"
-            value={editProduct?.productPrice || ''}
-            onChange={(e) => setEditProduct((prev) => ({ ...prev, productPrice: e.target.value }))}
+            name="productPrice"
+            value={editedFields.productPrice || ''}
+            onChange={handleFieldChange}
             fullWidth
-            margin="normal"
+            sx={{ mb: 3 }}
           />
           <TextField
             label="Description"
-            value={editProduct?.description || ''}
-            onChange={(e) => setEditProduct((prev) => ({ ...prev, description: e.target.value }))}
+            name="description"
+            value={editedFields.description || ''}
+            onChange={handleFieldChange}
             fullWidth
-            margin="normal"
+            sx={{ mb: 3 }}
           />
-          <Button variant="contained" onClick={handleEditSave}>Save</Button>
-          <Button variant="outlined" onClick={handleEditCancel}>Cancel</Button>
+          <center>
+            <Button variant="contained" onClick={handleEditSave} color="success">Update</Button>&nbsp;&nbsp;&nbsp;
+            <Button variant="contained" onClick={() => setOpenEditModal(false)} color="error">Cancel</Button>
+          </center>
+
         </Box>
       </Modal>
-      </div>
-    
+
+    </div>
   );
 }
 
