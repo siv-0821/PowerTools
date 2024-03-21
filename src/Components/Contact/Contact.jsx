@@ -51,10 +51,6 @@ setName('')
 setMessage('')
 
   };
-
-  
-
-
 return (
   <div id="contact-body">
     <div id="contact">

@@ -6,6 +6,7 @@
 .side-body{
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 .sidebar{
     background:rgb(0, 0, 255);
