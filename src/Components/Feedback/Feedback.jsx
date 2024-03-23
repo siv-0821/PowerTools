@@ -61,7 +61,7 @@ function Feedback() {
   }
   return (
     <>
-      <div className="body">
+      <div className="feedback-body">
         <div className="feedback">
           <Typography variant='h5'>Submit your Feedback about Our Services</Typography>
           <div className="underline"></div>
