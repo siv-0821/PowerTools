@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import "./ProductList.css"
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { tableCellClasses } from '@mui/material/TableCell';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -95,9 +95,9 @@ function ProductList() {
       
       <div className="productListBody">
         <div className='productList'>
-          <Link to="/productupload">
+          <NavLink to="productupload">
             <Button variant="contained" className='add'>Add</Button>
-          </Link>
+          </NavLink>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>

@@ -20,10 +20,6 @@ function Home() {
       <Navbar />
       <div className='home-page'>
         <div className='product-card'>
-          {/*{cardData.map(card => (
-            <Productcard key={card.id} products={card} />
-          ))}*/}
-
           {cardData.map(card => (
             <div >
               <Card key={card.id} >
@@ -38,11 +34,11 @@ function Home() {
                     <Typography variant='h5'>{card.title}</Typography>
                     <Typography>{card.desc}</Typography>
                   </CardContent>
-                  </Link>
-                  <CardActions>
-                     
-                  </CardActions>
-                
+                </Link>
+                <CardActions>
+
+                </CardActions>
+
               </Card>
             </div>
           ))}

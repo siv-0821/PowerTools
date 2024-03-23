@@ -8,14 +8,13 @@ import { Typography } from "@mui/material";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
 function ContactDetails() {
     const [rows, setRows] = useState([])
     useEffect(() => {
         const getdata = async () => {
             try {
                 const response = await axios.get('http://localhost:9000/newsletter/newsletter')
-                setRows(response.data.newsletters)
+                setRows(response.data.rev)
             }
             catch (error) {
                 Swal.fire('Error!', error.message || 'Something went wrong!', 'error');
