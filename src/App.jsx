@@ -22,7 +22,7 @@ function App() {
 export default App
  */
 
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import Login from './Components/Login/Login'
 import { Route, Routes } from 'react-router-dom'
 import Signup from './Components/Signup/Signup'
@@ -38,21 +38,23 @@ import ContactDetails from "./Components/ContactDetails/ContactDetails"
 import Feedback from './Components/Feedback/Feedback'
 import Auth from './Auth/Auth'
 import ProductUpload from './Components/ProductUpload/ProductUpload'
-import Overview from './Components/Overview/Overview'
 import FeedbackDetails from './Components/FeedbackDetails/FeedbackDetails'
 import Order from './Components/Order/Order'
 import Dashboard from './Components/Dashboard/Dashboard'
 import Users from './Components/Users/Users'
+import Productdetails from './Components/Productdetails/Productdetails'
+import AdminLogin from './Components/AdminLogin/AdminLogin'
 function App() {
   const { role } = useContext(DataContext);
   return (
     <div>
       <Routes>
+        <Route path='/admin' Component={AdminLogin}/>
         <Route path='/signup' Component={Signup} />
         <Route path='/' Component={Home} />
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
-        <Route path='/overview/:id' Component={Overview} />
+        <Route path='/productdetails/:id' Component={Productdetails} />
         <Route Component={Auth}>
           <Route path='*' Component={Login} />
           <Route path='/forget' Component={ForgetPass} />

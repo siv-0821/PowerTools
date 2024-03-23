@@ -12,8 +12,9 @@ function ProductUpload() {
     const [proDesc, setProDesc] = useState()
     const [imgUpload, setImgUpload] = useState()
 
-    const image = (e) => {
+    const image = async(e) => {
         setImgUpload(e.target.files[0])
+        await axios.post('/assets/img',{image})
     }
 
     const Upload = async () => {
@@ -36,15 +37,13 @@ function ProductUpload() {
                     <Card className='card'>
                         <CardContent>
                             <div className='product-con'>
-                                <TextField type='file' />
-                                <Button id="upload-img"
-                                    onChange={image}
-                                    variant='contained'
-                                    color='primary'
-                                    startIcon={<UploadFileIcon />}
-                                > Upload Image
-                                <input type='file' hidden/>
-                                </Button>
+                                
+                               <Button 
+                               variant='contained' 
+                               color='primary'
+                               onChange={image} 
+                               startIcon={<UploadFileIcon />}><label><input type='file' hidden/>Upload Image</label></Button>
+                                
                                 <TextField className='pr-name' autoComplete='off' label='Product Name' value={proName} onChange={(e) => setProName(e.target.value)} />
                                 <TextField className='pr-model' autoComplete='off' label='Product Model' value={proModel} onChange={(e) => setProModel(e.target.value)} />
                                 <TextField className='pr-price' autoComplete='off' label='Product Price' type='number' value={proPrice} onChange={(e) => setProPrice(e.target.value)} />

@@ -1,0 +1,16 @@
+.admin-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.admin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 450px;
+    height: 450px;
+    border: 1px solid red;
+}

@@ -1,10 +1,10 @@
 import './Home.css'
 import Navbar from '../Navbar/Navbar'
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import { Link } from 'react-router-dom'
 
 function Home() {
-    
+
   const cardData = [
     { id: 1, title: 'Card 1', image: 'https://source.unsplash.com/random', desc: 'Description for Card 1' },
     { id: 2, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
@@ -17,26 +17,34 @@ function Home() {
   ]
   return (
     <div className='home'>
-     <Navbar/>
+      <Navbar />
       <div className='home-page'>
-        <div className='product-card'>          
+        <div className='product-card'>
+          {/*{cardData.map(card => (
+            <Productcard key={card.id} products={card} />
+          ))}*/}
+
           {cardData.map(card => (
-              <Card key={card.id}>
-              <CardMedia
-                component="img"
-                height="200"
-                image={card.image}
-                alt={card.title}
-              />
-              <CardContent>
-                <Typography variant='h5'>{card.title}</Typography>
-                <Typography>{card.desc}</Typography>
-              </CardContent>
-              <CardActions>
-                <Button variant='small' component={Link} to={`/overview/${card.id}`}>View</Button>
-                <Button variant='small'>Buy</Button>
-              </CardActions>
-            </Card>
+            <div >
+              <Card key={card.id} >
+                <Link to={`/productdetails/${card.id}`}>
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={card.image}
+                    alt={card.title}
+                  />
+                  <CardContent>
+                    <Typography variant='h5'>{card.title}</Typography>
+                    <Typography>{card.desc}</Typography>
+                  </CardContent>
+                  </Link>
+                  <CardActions>
+                     
+                  </CardActions>
+                
+              </Card>
+            </div>
           ))}
         </div>
       </div>
