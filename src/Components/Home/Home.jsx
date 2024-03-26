@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 function Home() {
 
   const cardData = [
-    { id: 1, title: 'Card 1', image: 'https://source.unsplash.com/random', desc: 'Description for Card 1' },
+    { id: 1, title: 'Card 1', image: 'https://source.unsplash.com/random', model: 'Description for Card 1',rate:1000 },
     { id: 2, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
     { id: 3, title: 'Card 3', image: 'https://source.unsplash.com/random', desc: 'Description for Card 3' },
     { id: 4, title: 'Card 4', image: 'https://source.unsplash.com/random', desc: 'Description for Card 4' },
@@ -36,7 +36,8 @@ function Home() {
                   />
                   <CardContent>
                     <Typography variant='h5'>{card.title}</Typography>
-                    <Typography>{card.desc}</Typography>
+                    <Typography>Model : {card.model}</Typography>
+                    <Typography>Price : ₹ {card.rate}</Typography>
                   </CardContent>
                   </Link>
                   <CardActions>

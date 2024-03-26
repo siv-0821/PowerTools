@@ -1,4 +1,4 @@
-/*import React, { useContext } from 'react'
+/* import React, { useContext } from 'react'
 import DataContext from './DataContext'
 import Navbar from './Components/Navbar/Navbar';
 import {  Route, Routes } from 'react-router-dom';
@@ -55,7 +55,7 @@ function App() {
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
         <Route path='/productdetails/:id' Component={Productdetails} />
-        <Route Component={Auth}>
+        <Route  Component={Auth}>
           <Route path='*' Component={Login} />
           <Route path='/forget' Component={ForgetPass} />
           <Route path='/otp' Component={Otp} />

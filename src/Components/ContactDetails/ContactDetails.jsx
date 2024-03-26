@@ -15,7 +15,7 @@ function ContactDetails() {
         const getdata = async () => {
             try {
                 const response = await axios.get('http://localhost:9000/newsletter/newsletter')
-                setRows(response.data.newsletters)
+                setRows(response.data.rev)
             }
             catch (error) {
                 Swal.fire('Error!', error.message || 'Something went wrong!', 'error');

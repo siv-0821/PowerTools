@@ -1,47 +1,61 @@
-import { useParams } from 'react-router-dom'
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
-import './Productdetails.css'
+import React, { useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-const data = [
-  { id: 1, title: 'Card 1', image: 'https://source.unsplash.com/random', desc: 'Description for Card 1' },
-  { id: 2, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
-  { id: 3, title: 'Card 3', image: 'https://source.unsplash.com/random', desc: 'Description for Card 3' },
-  { id: 4, title: 'Card 4', image: 'https://source.unsplash.com/random', desc: 'Description for Card 4' },
-  { id: 5, title: 'Card 5', image: 'https://source.unsplash.com/random', desc: 'Description for Card 5' },
-  { id: 6, title: 'Card 6', image: 'https://source.unsplash.com/random', desc: 'Description for Card 6' },
-  { id: 7, title: 'Card 7', image: 'https://source.unsplash.com/random', desc: 'Description for Card 7' }
+const PaymentButton = () => {
+  const [paymentInProgress, setPaymentInProgress] = useState(false);
 
-]
-function Productdetails() {
-  const { id } = useParams()
-  const product = data.find(p => p.id === parseInt(id));
+  const handlePayment = async () => {
+    try {
+      setPaymentInProgress(true);
+      const response = await axios.post('http://localhost:9000/payment/', {
+        productName: 'Angle Grinder', 
+        amount: 3000 
+      });
+      
+      const { data } = response;
+      const options = {
+        key: 'rzp_test_OuBzAEm7MsopRx', 
+        amount: data.amount,
+        currency: data.currency,
+        order_id: data.id,
+        name: data.notes.productName,
+        description: `Payment for ${data.notes.productName}`,
+        handler: function (response) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Payment Successful',
+            text: `Payment ID: ${response.razorpay_payment_id}`
+          });
+        },
+        prefill: {
+          name: 'John Doe', 
+          email: 'example@example.com',
+        },
+        theme: {
+          color: '#3399cc' 
+        }
+      };
 
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error('Error initiating payment:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Payment Error',
+        text: 'An error occurred while processing payment. Please try again later.'
+      });
+    } finally {
+      setPaymentInProgress(false);
+    }
+  };
 
   return (
+    <button onClick={handlePayment} disabled={paymentInProgress}>
+      {paymentInProgress ? 'Processing Payment...' : 'Click to Pay'}
+    </button>
+  );
+};
 
-    <div className="over-body">
-      <div className="over-head">
-
-        <Box width="300px">
-
-          <Card>
-            <CardMedia
-              component="img"
-              height="140"
-              image={product.image}
-              alt="overview" />
-            <CardContent>
-              <Typography variant="h5" gutterBottom>{product.title}</Typography>
-              <Typography variant="body2" gutterBottom component="div">{product.desc}</Typography>
-            </CardContent>
-            <CardActions>
-            <Button variant='contained' color='primary'>Buy Now</Button>
-            </CardActions>
-          </Card>
-        </Box>
-      </div>
-    </div>
-  )
-}
-
-export default Productdetails
+export default PaymentButton;
