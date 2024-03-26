@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import './Users.css'
 import { Card, CardContent, Typography } from '@mui/material';
 
 function Users() {
@@ -15,7 +16,7 @@ function Users() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div className='user-body'>
       {users.map(user => (
         <Card key={user.id} style={{ width: 300, margin: 10 }}>
           <CardContent>

@@ -1,47 +1,62 @@
-import { useParams } from 'react-router-dom'
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
-import './Productdetails.css'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import './Productdetails.css';
+import { useData } from '../../DataContext';
 
-const data = [
-  { id: 1, title: 'Card 1', image: 'https://source.unsplash.com/random', desc: 'Description for Card 1' },
-  { id: 2, title: 'Card 2', image: 'https://source.unsplash.com/random', desc: 'Description for Card 2' },
-  { id: 3, title: 'Card 3', image: 'https://source.unsplash.com/random', desc: 'Description for Card 3' },
-  { id: 4, title: 'Card 4', image: 'https://source.unsplash.com/random', desc: 'Description for Card 4' },
-  { id: 5, title: 'Card 5', image: 'https://source.unsplash.com/random', desc: 'Description for Card 5' },
-  { id: 6, title: 'Card 6', image: 'https://source.unsplash.com/random', desc: 'Description for Card 6' },
-  { id: 7, title: 'Card 7', image: 'https://source.unsplash.com/random', desc: 'Description for Card 7' }
+const Productdetails = () => {
+  const { id } = useParams();
+  const { add, remove } = useData();
+  const [product, setProduct] = useState([]);
 
-]
-function Productdetails() {
-  const { id } = useParams()
-  const product = data.find(p => p.id === parseInt(id));
 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(`http://localhost:9000/product/${id}`); // Replace YOUR_BACKEND_URL with your actual backend URL
+        setProduct(response.data.id);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      }
+    };
+
+    fetchProduct();
+
+    // Cleanup function
+    return () => {
+      // Cleanup code if necessary
+    };
+  }, [id]);
+
+  if (!product) {
+    return <div>Loading...</div>; // Render loading indicator while fetching data
+  }
 
   return (
-
     <div className="over-body">
       <div className="over-head">
-
         <Box width="300px">
-
-          <Card>
+          <Card key={product.id}>
             <CardMedia
               component="img"
               height="140"
-              image={product.image}
-              alt="overview" />
+              image={product.Image}
+              alt="overview"
+            />
             <CardContent>
-              <Typography variant="h5" gutterBottom>{product.title}</Typography>
-              <Typography variant="body2" gutterBottom component="div">{product.desc}</Typography>
+              <Typography variant="h5" gutterBottom>{product.productName}</Typography>
+              <Typography variant="body2" gutterBottom component="div">{product.description}</Typography>
             </CardContent>
             <CardActions>
-            <Button variant='contained' color='primary'>Buy Now</Button>
+              <Button variant='contained' color='primary'>Buy Now</Button>
+              <Button variant='contained' color='primary' onClick={() => add(product)}>Add to Cart</Button>
+              <Button variant='contained' color='secondary' onClick={() => remove(product.id)}>Remove from Cart</Button>
             </CardActions>
           </Card>
         </Box>
       </div>
     </div>
-  )
-}
-
-export default Productdetails
+  );
+};
+export default Productdetails;

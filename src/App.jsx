@@ -1,35 +1,9 @@
-/*import React, { useContext } from 'react'
-import DataContext from './DataContext'
-import Navbar from './Components/Navbar/Navbar';
-import {  Route, Routes } from 'react-router-dom';
-import Home from './Components/Home/Home';
-
-function App() {
-  const {showNavbar,navigate ,setShowNavbar}  = useContext(DataContext);
-
-  return (
-    <div>
-
-     {showNavbar?<Navbar/>:<></>} 
-
-     <Routes>
-        <Route path='/home' element={<Home/>}/>
-      </Routes>
-    </div>
-  )
-}
-
-export default App
- */
-
-import { useContext } from 'react'
 import Login from './Components/Login/Login'
 import { Route, Routes } from 'react-router-dom'
 import Signup from './Components/Signup/Signup'
 import ForgetPass from './Components/ForgetPassword/Forgetpass'
 import Otp from './Components/Otp/Otp'
 import ResetPass from './Components/ResetPass/ResetPass'
-import DataContext from './DataContext'
 import Home from './Components/Home/Home'
 import ProductList from './Components/ProductList/ProductList'
 import OrderList from './Components/OrderList/OrderList'
@@ -44,19 +18,20 @@ import Dashboard from './Components/Dashboard/Dashboard'
 import Users from './Components/Users/Users'
 import Productdetails from './Components/Productdetails/Productdetails'
 import AdminLogin from './Components/AdminLogin/AdminLogin'
-import ImageUpload from './Components/Demo'
+import './App.css'
+import ViewCards from './Components/ViewCards/ViewCards'
 function App() {
-  const { role } = useContext(DataContext);
+
   return (
     <div>
       <Routes>
-        <Route path='/admin' Component={AdminLogin}/>
+        <Route path='/admin' Component={AdminLogin} />
         <Route path='/signup' Component={Signup} />
-        <Route path='/' Component={Home} />
+        <Route path='/' element={<Home />} />
+        <Route path='/viewcard' element={<ViewCards/>}/>
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
         <Route path='/productdetails/:id' Component={Productdetails} />
-        <Route path='/upload' Component={ImageUpload} />
 
         <Route Component={Auth}>
           <Route path='*' Component={Login} />
@@ -66,7 +41,7 @@ function App() {
         </Route>
 
         <Route path='/dashboard' Component={Dashboard} >
-          <Route path=''Component={Users} />
+          <Route path='' Component={Users} />
           <Route path='productlist' Component={ProductList} />
           <Route path='orderlist' Component={OrderList} />
           <Route path='productupload' Component={ProductUpload} />

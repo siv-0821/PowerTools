@@ -5,8 +5,8 @@
     width: 100%;
     height: 100vh;
     gap: 100px;
+    border: 1px solid red;
 }
-
 .mail {
     height: 500px;
     background: rgba(255, 255, 255, 0.24);
