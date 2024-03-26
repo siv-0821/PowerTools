@@ -8,7 +8,6 @@ import { Typography } from "@mui/material";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
 function ContactDetails() {
     const [rows, setRows] = useState([])
     useEffect(() => {

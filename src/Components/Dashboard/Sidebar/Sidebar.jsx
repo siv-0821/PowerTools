@@ -21,13 +21,13 @@ const Sidebar = ({ children }) => {
   };
 
   const routes = [
-    {path: '', name: 'User' ,icon:<UploadIcon /> },
-    { path: 'productlist', name: 'ProductList', icon: <ProductIcon /> },
-    { path: 'order', name: 'Order', icon: <AssignmentIcon /> },
-    { path: 'orderlist', name: 'OrderList', icon: <OrdersIcon /> },
-    { path: 'productupload', name: 'ProductUpload', icon: <UploadIcon /> },
-    { path: 'feedbackdetails', name: 'FeedbackDetails', icon: <FeedbackIcon /> },
-    { path: 'contactdetails', name: 'ContactDetails', icon: <AccountCircleIcon /> }
+    { path: '',                name: 'User' ,            icon:<UploadIcon /> },
+    { path: 'productlist',     name: 'ProductList',      icon: <ProductIcon /> },
+    { path: 'order',           name: 'Order',            icon: <AssignmentIcon /> },
+    { path: 'orderlist',       name: 'OrderList',        icon: <OrdersIcon /> },
+    { path: 'productupload',   name: 'ProductUpload',    icon: <UploadIcon /> },
+    { path: 'feedbackdetails', name: 'FeedbackDetails',  icon: <FeedbackIcon /> },
+    { path: 'contactdetails',  name: 'ContactDetails',   icon: <AccountCircleIcon /> }
   ];
 
   return (
