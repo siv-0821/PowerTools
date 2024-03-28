@@ -49,6 +49,7 @@ function ProductUpload() {
     return (
         <>
             <div className='box'>
+            
                 <Box width='1200px'>
                     <Card className='card'>
                         <CardContent>

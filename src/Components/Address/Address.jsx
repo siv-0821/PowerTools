@@ -47,8 +47,7 @@ function Address() {
                 throw new Error('Invalid PIN code');
             }
 
-            // Send form data to backend
-            const response = await axios.post('http://localhost:9000/address/address', {
+            const response = await axios.post('/url', {
                 name,
                 contactNumber,
                 pinCode,

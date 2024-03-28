@@ -36,9 +36,9 @@ const PaymentButton = ({rows,card,setCard}) => {
   const handlePayment = async () => {
     try {
       setPaymentInProgress(true);
-      const response = await axios.post('http://localhost:9000/payment/', {
-        productName: row.Title,
-        amount: row.Amt
+      const response = await axios.post('http://localhost:9000/payment/payment', {
+        productName: 'Angle Grinder', 
+        amount: 3000 
       });
 
       const { data } = response;
