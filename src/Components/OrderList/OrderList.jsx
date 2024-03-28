@@ -1,28 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import './OrderList.css'
-
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import DeleteIcon from '@mui/icons-material/Delete';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import { tableCellClasses } from '@mui/material/TableCell';
-import { styled } from '@mui/material/styles';
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
+import './OrderList.css';
+import { useEffect, useState } from 'react';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Typography } from "@mui/material";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 function OrderList() {
   const [rows, setRows] = useState([]);
@@ -44,46 +28,35 @@ function OrderList() {
     fetchData();
   }, []);
 
-  
+
   return (
     <>
-      
+
       <div className='orderListBody'>
         <div className='orderList'>
-
-          <TableContainer component={Paper}>
-            <Table aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>S.No</StyledTableCell>
-                  <StyledTableCell align="left">CustomerID</StyledTableCell>
-                  <StyledTableCell align="left">Customer Name</StyledTableCell>
-                  <StyledTableCell align="left">Product ID</StyledTableCell>
-                  <StyledTableCell align="left">Product Name</StyledTableCell>
-                  <StyledTableCell align="left">Ordered at</StyledTableCell>
-                  <StyledTableCell align='left'>Payment Mode</StyledTableCell>
-                  <StyledTableCell align='left'>Amount</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                      {index + 1}
-                    </TableCell>
-                    <TableCell align="left">{row.customerID}</TableCell>
-                    <TableCell align="left">{row.customerName}</TableCell>
-                    <TableCell align="left">{row.productID}</TableCell>
-                    <TableCell align="left">{row.productName}</TableCell>
-                    
-                    <TableCell align="left">{row.purchaseDate}</TableCell>
-                    <TableCell align="left">{row.paymentMode}</TableCell>
-                    <TableCell align="left">{row.amount}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          {rows.map((row, index) => (
+            <Accordion className="no" key={`id${index}`}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={`panel${index + 1}-content`}
+                id={`panel${index + 1}-header`}
+              >
+                <Typography variant="h7" className="from">
+                  <div><b>{row.name}</b> </div>
+                  <div ><b>Order ID : </b>{row.orderID} </div>
+                  <div>{row.purchaseDate} </div>
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div style={{ textAlign: 'left' }}><b>Product :</b> {row.productName}</div>
+                <div style={{ textAlign: 'left' }}><b>Model :</b> {row.productModel}</div>
+                <div style={{ textAlign: "left" }}><b>Payment ID : </b>{row.paymentID}</div>
+                <div style={{ textAlign: "left" }}><b>Amount : </b>{row.amount}</div>
+                <div style={{ textAlign: "left" }}><b>Address : </b>{row.doorNo}, {row.landmark}, {row.area}, {row.pinCode}, {row.city}</div>
+                <div style={{ textAlign: "left" }}><b>Contact Number : </b>{row.mobileNumber}</div>
+              </AccordionDetails>
+            </Accordion>
+          ))}
         </div>
       </div>
     </>

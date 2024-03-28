@@ -45,6 +45,7 @@ import Users from './Components/Users/Users'
 import Productdetails from './Components/Productdetails/Productdetails'
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import ImageUpload from './Components/Demo'
+import Address from './Components/Address/Address'
 function App() {
   const { role } = useContext(DataContext);
   return (
@@ -57,7 +58,7 @@ function App() {
         <Route path='/feedback' Component={Feedback} />
         <Route path='/productdetails/:id' Component={Productdetails} />
         <Route path='/upload' Component={ImageUpload} />
-
+        <Route path="/address" Component={Address}/>
         <Route Component={Auth}>
           <Route path='*' Component={Login} />
           <Route path='/forget' Component={ForgetPass} />

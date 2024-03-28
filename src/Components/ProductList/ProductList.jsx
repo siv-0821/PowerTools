@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Modal, TextField } from '@mui/material';
+import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -95,6 +95,7 @@ function ProductList() {
       
       <div className="productListBody">
         <div className='productList'>
+        <Typography variant="h3" className='heading'>Product List</Typography><br/>
           <NavLink to="productupload">
             <Button variant="contained" className='add'>Add</Button>
           </NavLink>

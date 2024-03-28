@@ -15,11 +15,8 @@
     overflow-y: hidden;
 }
 .productList{
-    position: relative;
-    top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+    position: absolute;
+    top: 50px;
     background: rgba(255, 255, 255, 0.24);
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -29,13 +26,14 @@
         padding: 50px; 
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
        width: 90vw;
-       gap: 10px;
-       height: 80vh;
+       gap: 20px;
+       height: 90vh;
        text-align: center;
        overflow-y: auto;
+       align-items: center;
 }
 .add{
     position: relative;
     top: -20px;
-    right: 30px;
+    right: auto;
 }
