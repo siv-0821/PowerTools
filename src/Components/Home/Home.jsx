@@ -1,9 +1,9 @@
-import './Home.css'
-import Navbar from '../Navbar/Navbar'
+import './Home.css';
+import Navbar from '../Navbar/Navbar';
 import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-function Home() {
+function Home({ card, setCard }) {
 
   const cardData = [
     { id: 1, title: 'Card 1', image: 'https://source.unsplash.com/random', model: 'Description for Card 1',rate:1000 },
@@ -13,10 +13,9 @@ function Home() {
     { id: 5, title: 'Card 5', image: 'https://source.unsplash.com/random', desc: 'Description for Card 5' },
     { id: 6, title: 'Card 6', image: 'https://source.unsplash.com/random', desc: 'Description for Card 6' },
     { id: 7, title: 'Card 7', image: 'https://source.unsplash.com/random', desc: 'Description for Card 7' }
-
   ]
   return (
-    <div className='home'>
+    <>
       <Navbar />
       <div className='home-page'>
         <div className='product-card'>
@@ -39,14 +38,13 @@ function Home() {
                 <CardActions>
 
                 </CardActions>
-
               </Card>
             </div>
           ))}
         </div>
       </div>
-    </div>
-  )
+    </>
+  );
 }
-export default Home
 
+export default Home;
