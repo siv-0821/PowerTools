@@ -1,21 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { useCart } from '../../DataContext';
 
-const PaymentButton = () => {
+const PaymentButton = ({rows,card,setCard}) => {
+   const { id } = useParams(); 
+  const { addToCart } = useCart();
+  const [row, setRow] = useState({});
   const [paymentInProgress, setPaymentInProgress] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:9000/product/${id}`);
+        console.log(response.data);
+        setRow(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  const addcard = () => {
+    addToCart(row); // Add the current item to the cart
+    Swal.fire({
+      icon: 'success',
+      title: 'Added to Cart',
+      text: 'Item has been added to your cart!'
+    });
+  };
 
   const handlePayment = async () => {
     try {
       setPaymentInProgress(true);
       const response = await axios.post('http://localhost:9000/payment/', {
-        productName: 'Angle Grinder', 
-        amount: 3000 
+        productName: row.Title,
+        amount: row.Amt
       });
-      
+
       const { data } = response;
       const options = {
-        key: 'rzp_test_OuBzAEm7MsopRx', 
+        key: 'rzp_test_OuBzAEm7MsopRx',
         amount: data.amount,
         currency: data.currency,
         order_id: data.id,
@@ -29,11 +57,11 @@ const PaymentButton = () => {
           });
         },
         prefill: {
-          name: 'John Doe', 
+          name: 'John Doe',
           email: 'example@example.com',
         },
         theme: {
-          color: '#3399cc' 
+          color: '#3399cc'
         }
       };
 
@@ -52,9 +80,25 @@ const PaymentButton = () => {
   };
 
   return (
-    <button onClick={handlePayment} disabled={paymentInProgress}>
-      {paymentInProgress ? 'Processing Payment...' : 'Click to Pay'}
-    </button>
+    <Card key={row.id}>
+      <CardMedia
+        component="img"
+        height="200"
+        image={row.Image}
+        alt={row.Title}
+      />
+      <CardContent>
+        <Typography variant='h5'>{row.Title}</Typography>
+        <Typography>Model: {row.Description}</Typography>
+        <Typography>Price: ₹ {row.Amt}</Typography>
+      </CardContent>
+      <CardActions>
+        <Button onClick={addcard}>Add to Card</Button>
+      <Button color='primary' variant='contained' onClick={handlePayment} disabled={paymentInProgress}>
+        {paymentInProgress ? 'Processing Payment...' : 'Click to Pay'}
+      </Button>
+      </CardActions>
+    </Card>
   );
 };
 

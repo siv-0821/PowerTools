@@ -1,5 +1,5 @@
 import Login from './Components/Login/Login'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes} from 'react-router-dom'
 import Signup from './Components/Signup/Signup'
 import ForgetPass from './Components/ForgetPassword/Forgetpass'
 import Otp from './Components/Otp/Otp'
@@ -10,7 +10,6 @@ import OrderList from './Components/OrderList/OrderList'
 import Contact from './Components/Contact/Contact'
 import ContactDetails from "./Components/ContactDetails/ContactDetails"
 import Feedback from './Components/Feedback/Feedback'
-import Auth from './Auth/Auth'
 import ProductUpload from './Components/ProductUpload/ProductUpload'
 import FeedbackDetails from './Components/FeedbackDetails/FeedbackDetails'
 import Order from './Components/Order/Order'
@@ -19,22 +18,28 @@ import Users from './Components/Users/Users'
 import Productdetails from './Components/Productdetails/Productdetails'
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import './App.css'
-import ViewCards from './Components/ViewCards/ViewCards'
-function App() {
+import ViewCard from './Components/ViewCards/ViewCards'
+import AuthCheck from './Auth/Auth'
+import { useState } from 'react'
 
+
+function App() {
+  
+const [card,setCard]=useState([])
   return (
     <div>
+
       <Routes>
         <Route path='/admin' Component={AdminLogin} />
         <Route path='/signup' Component={Signup} />
-        <Route path='/' element={<Home />} />
-        <Route path='/viewcard' element={<ViewCards/>}/>
+        <Route path='/' element={<Home card={card} setCard={setCard}/>} />
+        <Route path='viewcard' element={<ViewCard />} />
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
         <Route path='/productdetails/:id' Component={Productdetails} />
 
-        <Route Component={Auth}>
-          <Route path='*' Component={Login} />
+        <Route Component={AuthCheck}>
+          <Route path='/login' Component={Login} />
           <Route path='/forget' Component={ForgetPass} />
           <Route path='/otp' Component={Otp} />
           <Route path='/resetpass' Component={ResetPass} />

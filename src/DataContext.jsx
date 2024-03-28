@@ -1,31 +1,49 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const DataContext = createContext();
 
-function useData() {
-  const context = useContext(DataContext);
-  if (!context) {
-    throw new Error('useData must be used within a DataProvider');
-  }
-  return context;
-}
+export const DataProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState([]);
 
-function DataProvider({ children }) {
-  const [cart, setCart] = useState([]);
-
-  const add = (product) => {
-    setCart([...cart, product]);
+  const addToCart = (item) => {
+    setCartItems((prevItems) => [...prevItems, item]);
   };
 
-  const remove = (productId) => {
-    setCart(cart.filter(item => item.id !== productId));
+  const updateCartItemQuantity = (itemId, quantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === itemId ? { ...item, quantity: item.quantity + quantity } : item
+      )
+    );
+  };
+
+  const removeItemFromCart = (itemId) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
   };
 
   return (
-    <DataContext.Provider value={{ cart, add, remove }}>
+    <DataContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        updateCartItemQuantity,
+        removeItemFromCart,
+        clearCart,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
-}
+};
 
-export { DataProvider, useData };
+export const useCart = () => {
+  const context = useContext(DataContext);
+  if (!context) {
+    throw new Error('useCart must be used within a DataProvider');
+  }
+  return context;
+};

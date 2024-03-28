@@ -175,7 +175,7 @@ function Signup() {
   
           <Typography variant="body2" style={{ marginTop: '20px' }}>
             Already have an account?{' '}
-            <Link to="/" style={{ textDecoration: 'none', color: '#1976D2' }}>
+            <Link to="/login" style={{ textDecoration: 'none', color: '#1976D2' }}>
               Login
             </Link>
           </Typography>

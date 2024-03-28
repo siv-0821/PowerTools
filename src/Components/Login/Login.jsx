@@ -44,7 +44,8 @@ function Login() {
             Swal.fire('Success!', 'Login successful!', 'success');
             setEmail('');
             setPassword('');
-            //window.location.href = '/login';
+            localStorage.getItem('usertoken',response.data.token)
+            window.location.href = '/';
         } catch (error) {
             Swal.fire('Error!', error.message || 'Something went wrong!', 'error');
         }

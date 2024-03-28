@@ -1,42 +1,27 @@
-.shop{
+.nav-body {
+    flex-grow: 1;
+  }
+  
+  .nav-bar {
+    flex-grow: 1;
+  }
+  
+  .nav-link {
     display: flex;
-    gap: 5px;
-    align-items: center;
-}
-.nav{
-    display: flex;
-    gap: 30%;
-    align-items: center;
-}
-.nav-options{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border-radius: 20px;
-    margin: 20px;
-    background-color: #8369c0;
-}
-#back{
-    font-size: 30px;
-    font-weight: bold;
-    transition: 0.5s ;
-}
-#back:hover{
-    color: #1976d2;
-    cursor: pointer;
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 6px;
-}
-#title{
-    margin-left: 20px;
-    font-size: 25px;
-    margin-top: 10px;
-    font-weight: bold;
-}
-#upload-head{
-    display: flex;
-    gap: 20%;
-    margin-top: 10px;
-}
+    /* justify-content: flex-end; */
+    gap: 20px; 
+  }
+  
+  .nav-link a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 18px; 
+  }
+  
+  
+  @media screen and (max-width: 600px) {
+    .nav-link {
+      align-items: flex-end;
+    }
+  }
+  

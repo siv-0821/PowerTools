@@ -2,18 +2,29 @@ import { Button, TextField, Typography } from '@mui/material'
 import './AdminLogin.css'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
+import axios from 'axios'
 
 function AdminLogin() {
 
   const [user,setUser]=useState()
   const [password,setPassword]=useState()
 
-  const submit=()=>{
+  const submit=async()=>{
     if(!user || !password){
       Swal.fire("Error","Fill all the Fields",'error')
       return
     }
-
+try{
+  const response=await axios.post('http://localhost:9000/',{user,password})
+  Swal.fire('Success!', 'Login successful!', 'success');
+  setUser('');
+  setPassword('');
+  localStorage.getItem('admintoken',response.data.token)
+  window.location.href = '/dashboard';
+}
+catch(err){
+  Swal.fire('')
+}
 
   }
   return (

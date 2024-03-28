@@ -1,18 +1,28 @@
-.home-page{
+.home-main{
     display: flex;
-    height: 100%;
-    padding: 20px;
-    border: 2px solid red;
+    height: 100vh;
+    border: 1px solid red;
+    padding: 60px;
 }
-.product-card{
-    display: inline-flex;
-    align-items: center;
+.home-map{
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    border: 2px solid blue;
-    gap: 150px; 
+    gap: 30px;
+
 }
-#card{
-    border: 1px solid whitesmoke;
-    width: 200px;
+/* .home-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+    height: 100vh;
 }
+.home-map{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 30px;
+    flex-wrap: wrap;
+    border: 1px solid red;
+}  */

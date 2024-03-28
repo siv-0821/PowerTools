@@ -1,22 +1,41 @@
-import { AppBar, Toolbar, Typography } from '@mui/material'
-import './Navbar.css'
-import { Link } from 'react-router-dom'
-const Navbar=()=> {
+import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@mui/material';
+import { AccountCircle } from '@mui/icons-material';
+import './Navbar.css';
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+const Navbar = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <div className='boxes' >
-      <AppBar >
-        <Toolbar className='nav'>
-        <div className='shop'>
-        <Typography variant='h6' gutterBottom id="title">R&R POWER TOOLS</Typography>
-        </div>
-        <Link to='/viewcard'>View</Link>
-        <Typography  variant='h5' gutterBottom id="upload-head">{}</Typography>
-        
+    <div className='nav-body'>
+      <AppBar>
+        <Toolbar>
+          <div className='nav-bar'>
+            <Typography variant='h6' gutterBottom id="title">R&R POWER TOOLS</Typography>
+          </div>
+          <div className='nav-link'>
+            <Link to='/'>Home</Link>
+            <Link to='/contact'>Contact us</Link>
+            <Link to='/feedback'>Feedback</Link>
+            <Link to='/viewcard'>Cart</Link>
+            <Link to='/order'>Orders</Link>
+            
+          </div>
+          <div>
+            <Link to="/login">Sign in</Link>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
