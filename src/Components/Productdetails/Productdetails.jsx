@@ -8,7 +8,7 @@ const PaymentButton = () => {
   const handlePayment = async () => {
     try {
       setPaymentInProgress(true);
-      const response = await axios.post('http://localhost:9000/payment/', {
+      const response = await axios.post('http://localhost:9000/payment/payment', {
         productName: 'Angle Grinder', 
         amount: 3000 
       });
