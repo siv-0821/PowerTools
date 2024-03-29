@@ -1,5 +1,4 @@
 import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@mui/material';
-import { AccountCircle } from '@mui/icons-material';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
@@ -19,7 +18,9 @@ const Navbar = () => {
       <AppBar>
         <Toolbar>
           <div className='nav-bar'>
-            <Typography variant='h6' gutterBottom id="title">R&R POWER TOOLS</Typography>
+            <Typography variant='h6' gutterBottom id="title" 
+            style={{fontSize:"25px",fontWeight:"700",marginTop:"10px"}}
+            >R&R POWER TOOLS</Typography>
           </div>
           <div className='nav-link'>
             <Link to='/'>Home</Link>
@@ -27,7 +28,6 @@ const Navbar = () => {
             <Link to='/feedback'>Feedback</Link>
             <Link to='/viewcard'>Cart</Link>
             <Link to='/order'>Orders</Link>
-            
           </div>
           <div>
             <Link to="/login">Sign in</Link>

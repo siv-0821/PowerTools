@@ -19,8 +19,8 @@ import AdminLogin from './Components/AdminLogin/AdminLogin'
 import './App.css'
 import ViewCard from './Components/ViewCards/ViewCards'
 import AuthCheck from './Auth/Auth'
+import PDF from './Components/Receipt/Receipt'
 import PaymentButton from './Components/Productdetails/Productdetails'
-
 
 function App() {
   
@@ -35,8 +35,8 @@ function App() {
         <Route path='viewcard' element={<ViewCard />} />
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
-        <Route path='/productdetails/:id' exact Component={PaymentButton} />
-
+        <Route path='/productdetails/:id' Component={PaymentButton} />
+        <Route path='/receipt' Component={PDF} />
         <Route Component={AuthCheck}>
           <Route path='/login' Component={Login} />
           <Route path='/forget' Component={ForgetPass} />
