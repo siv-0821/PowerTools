@@ -88,10 +88,7 @@ const PaymentButton = () => {
         alt={row.productName}
       />
       <CardContent>
-        <Typography variant='h5'>{row.Title}</Typography>
-        <Typography>Model: {row.Description}</Typography>
-        <Typography> {row.Description}</Typography>
-        <Typography>Amount : ₹ {row.Amt}</Typography>
+
         <Typography variant='h5'>{row.productName}</Typography>
         <Typography>Model: {row.productModel}</Typography>
         <Typography>{row.description}</Typography>
