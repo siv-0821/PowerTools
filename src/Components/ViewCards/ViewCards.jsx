@@ -7,11 +7,11 @@ function ViewCart() {
   const { cartItems, updateCartItemQuantity } = useCart();
 
   const handleIncrement = (itemId) => {
-    updateCartItemQuantity(itemId, 1); // Increase quantity by 1
+    updateCartItemQuantity(itemId + 1); // Increase quantity by 1
   };
 
   const handleDecrement = (itemId) => {
-    updateCartItemQuantity(itemId, -1); // Decrease quantity by 1
+    updateCartItemQuantity(itemId - 1); // Decrease quantity by 1
   };
 
   return (
@@ -20,21 +20,22 @@ function ViewCart() {
       <h2>Shopping Cart</h2>
       <Grid container spacing={2}>
         {cartItems.map(item => (
-          <Grid item key={item.id} xs={12} sm={6} md={4} lg={3}>
+          <Grid item key={item._id} xs={12} sm={6} md={4} lg={3}>
             <Card>
               <CardMedia
                 component="img"
                 height="200"
                 image={item.Image}
-                alt={item.Title}
+                alt={item.productName
+                  }
               />
               <CardContent>
-                <Typography variant='h5'>{item.Title}</Typography>
-                <Typography>Model: {item.Description}</Typography>
-                <Typography>Price: ₹ {item.Amt}</Typography>
+                <Typography variant='h5'>{item.productName}</Typography>
+                <Typography>Model: {item.description}</Typography>
+                <Typography>Price: ₹ {item.productPrice}</Typography>
                 <Typography>Quantity: {item.quantity}</Typography> {/* Display quantity */}
-                <Button onClick={() => handleIncrement(item.id)}>+</Button> {/* Increment button */}
-                <Button onClick={() => handleDecrement(item.id)}>-</Button> {/* Decrement button */}
+                <Button onClick={() => handleIncrement(item._id)}>+</Button> {/* Increment button */}
+                <Button onClick={() => handleDecrement(item._id)}>-</Button> {/* Decrement button */}
               </CardContent>
             </Card>
           </Grid>

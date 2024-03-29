@@ -15,28 +15,27 @@ import FeedbackDetails from './Components/FeedbackDetails/FeedbackDetails'
 import Order from './Components/Order/Order'
 import Dashboard from './Components/Dashboard/Dashboard'
 import Users from './Components/Users/Users'
-import Productdetails from './Components/Productdetails/Productdetails'
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import './App.css'
 import ViewCard from './Components/ViewCards/ViewCards'
 import AuthCheck from './Auth/Auth'
-import { useState } from 'react'
+import PaymentButton from './Components/Productdetails/Productdetails'
 
 
 function App() {
   
-const [card,setCard]=useState([])
+
   return (
     <div>
 
       <Routes>
         <Route path='/admin' Component={AdminLogin} />
         <Route path='/signup' Component={Signup} />
-        <Route path='/' element={<Home card={card} setCard={setCard}/>} />
+        <Route path='/' element={<Home />} />
         <Route path='viewcard' element={<ViewCard />} />
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
-        <Route path='/productdetails/:id' Component={Productdetails} />
+        <Route path='/productdetails/:id' exact Component={PaymentButton} />
 
         <Route Component={AuthCheck}>
           <Route path='/login' Component={Login} />

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'; 
 import Navbar from '../Navbar/Navbar';
 
-function Home({card,setCard}) {
+function Home() {
    const [rows, setRow] = useState([])
   useEffect(()=>{
     const fetchdata = async () => {
@@ -23,9 +23,9 @@ function Home({card,setCard}) {
        <div className='home-main'>
         <div className='home-map'>
           {rows.map(item => (
-            <div key={item.id}>
+            <div key={item._id}>
               <Card sx={{width:230}}>
-                <Link rows={rows} card={card} setCard={setCard} to={`/productdetails/${item.id}`}>
+                <Link  to={`/productdetails/${item._id}`}>
                   <CardMedia
                     component="img"
                     height="200"
@@ -36,7 +36,6 @@ function Home({card,setCard}) {
                   <CardContent>
                     <Typography variant='h5'>{item.productName}</Typography>
                     <Typography>Model : {item.productModel}</Typography>
-                    
                     <Typography>{item.description}</Typography>
                     <Typography>Amount : ₹ {item.productPrice}</Typography>
                   </CardContent>

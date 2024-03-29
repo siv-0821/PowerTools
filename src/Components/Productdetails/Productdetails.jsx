@@ -5,10 +5,10 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../DataContext';
 
-const PaymentButton = ({rows,card,setCard}) => {
+const PaymentButton = () => {
    const { id } = useParams(); 
   const { addToCart } = useCart();
-  const [row, setRow] = useState({});
+  const [row, setRow] = useState([]);
   const [paymentInProgress, setPaymentInProgress] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const PaymentButton = ({rows,card,setCard}) => {
         console.log(response.data);
         setRow(response.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error(`Error fetching data:${id}`, error);
       }
     };
     fetchData();
@@ -85,12 +85,13 @@ const PaymentButton = ({rows,card,setCard}) => {
         component="img"
         height="200"
         image={row.Image}
-        alt={row.Title}
+        alt={row.productName}
       />
       <CardContent>
-        <Typography variant='h5'>{row.Title}</Typography>
-        <Typography>Model: {row.Description}</Typography>
-        <Typography>Price: ₹ {row.Amt}</Typography>
+        <Typography variant='h5'>{row.productName}</Typography>
+        <Typography>Model: {row.productModel}</Typography>
+        <Typography>{row.description}</Typography>
+        <Typography>Price: ₹ {row.productPrice}</Typography>
       </CardContent>
       <CardActions>
         <Button onClick={addcard}>Add to Card</Button>

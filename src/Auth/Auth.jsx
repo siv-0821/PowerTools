@@ -30,7 +30,7 @@ const AuthCheck = () => {
 
     if(loading) return('loading...')
   return (
-    noAuth ? <Outlet/> : <Navigate to="/home" />
+    noAuth ? <Outlet/> : <Navigate to="/dashboard" />
   )
 }
 
