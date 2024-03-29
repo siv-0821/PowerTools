@@ -1,28 +1,27 @@
 .home-main{
     display: flex;
     height: 100vh;
-    border: 1px solid red;
     padding: 60px;
 }
-.home-map{
+.home-map {
+    position: absolute;
+    top: 100px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 40px; 
+   
+  }
+.productName{
+    color: black;
+    font-weight: 600;
 }
-/* .home-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid blue;
-    height: 100vh;
+.productModel,.productPrice{
+    color: black;
 }
-.home-map{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px 30px;
-    flex-wrap: wrap;
-    border: 1px solid red;
-}  */
+.home-map .items{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 7px;
+    max-width: 250px;
+    max-height: 330px;
+}

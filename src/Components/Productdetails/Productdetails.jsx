@@ -29,7 +29,7 @@ const PaymentButton = ({rows,card,setCard}) => {
     Swal.fire({
       icon: 'success',
       title: 'Added to Cart',
-      text: 'Item has been added to your cart!'
+      text: 'Item added Successfully on your Cart!'
     });
   };
 
@@ -90,10 +90,11 @@ const PaymentButton = ({rows,card,setCard}) => {
       <CardContent>
         <Typography variant='h5'>{row.Title}</Typography>
         <Typography>Model: {row.Description}</Typography>
-        <Typography>Price: ₹ {row.Amt}</Typography>
+        <Typography> {row.Description}</Typography>
+        <Typography>Amount : ₹ {row.Amt}</Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={addcard}>Add to Card</Button>
+        <Button onClick={addcard}variant='contained' >Add to Cart</Button>
       <Button color='primary' variant='contained' onClick={handlePayment} disabled={paymentInProgress}>
         {paymentInProgress ? 'Processing Payment...' : 'Click to Pay'}
       </Button>

@@ -24,7 +24,7 @@ function Home({card,setCard}) {
         <div className='home-map'>
           {rows.map(item => (
             <div key={item.id}>
-              <Card sx={{width:230}}>
+              <Card sx={{width:230}} className="items">
                 <Link rows={rows} card={card} setCard={setCard} to={`/productdetails/${item.id}`}>
                   <CardMedia
                     component="img"
@@ -34,11 +34,9 @@ function Home({card,setCard}) {
                     alt={item.productName}
                   />
                   <CardContent>
-                    <Typography variant='h5'>{item.productName}</Typography>
-                    <Typography>Model : {item.productModel}</Typography>
-                    
-                    <Typography>{item.description}</Typography>
-                    <Typography>Amount : ₹ {item.productPrice}</Typography>
+                    <Typography style={{fontSize:"24px"}} className="productName">{item.productName}</Typography>
+                    <Typography style={{fontSize:"18px"}} className='productModel'><b>Model :</b> {item.productModel}</Typography>
+                    <Typography style={{fontSize:"18px"}}className="productPrice"><b>Amount :</b> ₹ {item.productPrice}</Typography>
                   </CardContent>
                 </Link>
                 <CardActions>

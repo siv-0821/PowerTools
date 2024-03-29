@@ -21,7 +21,7 @@ import './App.css'
 import ViewCard from './Components/ViewCards/ViewCards'
 import AuthCheck from './Auth/Auth'
 import { useState } from 'react'
-
+import PDF from './Components/Receipt/Receipt'
 
 function App() {
   
@@ -37,7 +37,7 @@ const [card,setCard]=useState([])
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
         <Route path='/productdetails/:id' Component={Productdetails} />
-
+        <Route path='/receipt' Component={PDF} />
         <Route Component={AuthCheck}>
           <Route path='/login' Component={Login} />
           <Route path='/forget' Component={ForgetPass} />
