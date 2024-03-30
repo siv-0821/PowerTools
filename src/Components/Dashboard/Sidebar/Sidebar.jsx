@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Typography } from '@mui/material';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import MarkEmailReadOutlinedIcon from '@mui/icons-material/MarkEmailReadOutlined';
+import ThumbUpAltSharpIcon from '@mui/icons-material/ThumbUpAltSharp';
 import {
-  Assignment as AssignmentIcon,
-  AccountCircle as AccountCircleIcon,
   Menu as MenuIcon,
   GridOn as ProductIcon, 
   CloudUpload as UploadIcon, 
-  StarOutline as FeedbackIcon, 
   ListAlt as OrdersIcon 
 } from '@mui/icons-material';
 import './Sidebar.css';
@@ -21,20 +22,21 @@ const Sidebar = ({ children }) => {
   };
 
   const routes = [
-    { path: '',                name: 'User' ,            icon:<UploadIcon /> },
-    { path: 'productlist',     name: 'ProductList',      icon: <ProductIcon /> },
-    { path: 'order',           name: 'Order',            icon: <AssignmentIcon /> },
-    { path: 'orderlist',       name: 'OrderList',        icon: <OrdersIcon /> },
-    { path: 'productupload',   name: 'ProductUpload',    icon: <UploadIcon /> },
-    { path: 'feedbackdetails', name: 'FeedbackDetails',  icon: <FeedbackIcon /> },
-    { path: 'contactdetails',  name: 'ContactDetails',   icon: <AccountCircleIcon /> }
+    { path: '',                name: 'Dashboard' ,            icon:<DashboardIcon/> },
+    { path: 'productlist',     name: 'Product List',      icon: <ProductIcon /> },
+    { path: 'order',           name: 'Order to Dealer',            icon: <ShoppingCartIcon /> },
+    { path: 'orderlist',       name: 'Order List',        icon: <OrdersIcon /> },
+    { path: 'productupload',   name: 'Product Upload',    icon: <UploadIcon /> },
+    { path: 'feedbackdetails', name: 'Feedback Details',  icon: <ThumbUpAltSharpIcon /> },
+    { path: '/contactdetails',  name: 'Newsletters',   icon: <MarkEmailReadOutlinedIcon/> }
   ];
 
   return (
     <div className='side-body'>
-      <motion.div animate={{ width: isOpen ? '200px' : '80px' }} className='sidebar'>
+      <motion.div animate={{ width: isOpen ? '300px' : '80px' }} className='sidebar'>
         <div className='side-menu'>
-          {isOpen && <Typography variant='h5' gutterBottom>Dashboard</Typography>}
+          {isOpen && <Typography variant='h5' gutterBottom><center><b>R&R Power Tools</b></center></Typography>}
+          
           <div id='menu'>
             <MenuIcon onClick={toggleSidebar} style={{marginRight:'10px'}}/>
           </div>
