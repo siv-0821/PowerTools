@@ -1,4 +1,29 @@
-.user-body{
+.count-container {
+
     display: flex;
-    gap: 20px;
-}
+    margin-top: -350px;
+    justify-content: space-between;
+  }
+  
+  .count-card {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 300px; /* Adjust card width as needed */
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-right: 40px; /* Adjust custom space between cards */
+    padding: 10px;
+    text-align: center;
+  }
+  .count-card:hover{
+    color: #0000ff;
+    transition: 0.8s;
+    cursor: pointer;
+  }
+
+  
+  /* Remove margin from last card */
+  .count-card:last-child {
+    margin-right: 0;
+  }
+  

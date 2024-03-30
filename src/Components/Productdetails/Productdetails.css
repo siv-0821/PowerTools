@@ -1,0 +1,20 @@
+.productdetailbody{
+    display: flex;
+    height: 100vh;
+    padding: 60px;
+    justify-content: center;
+    margin: auto;
+}
+.productcard{
+    width: 1000px;
+    height: 530px;
+    position: absolute;
+    align-items: center;
+    top: 100px;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 40px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 7px; 
+}

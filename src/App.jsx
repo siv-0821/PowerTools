@@ -37,6 +37,7 @@ function App() {
         <Route path='/feedback' Component={Feedback} />
         <Route path='/productdetails/:id' Component={PaymentButton} />
         <Route path='/receipt' Component={PDF} />
+        
         <Route Component={AuthCheck}>
           <Route path='/login' Component={Login} />
           <Route path='/forget' Component={ForgetPass} />

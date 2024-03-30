@@ -4,9 +4,9 @@ import Swal from 'sweetalert2';
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../DataContext';
-
+import './Productdetails.css'
 const PaymentButton = () => {
-   const { id } = useParams(); 
+  const { id } = useParams();
   const { addToCart } = useCart();
   const [row, setRow] = useState([]);
   const [paymentInProgress, setPaymentInProgress] = useState(false);
@@ -37,8 +37,8 @@ const PaymentButton = () => {
     try {
       setPaymentInProgress(true);
       const response = await axios.post('http://localhost:9000/payment/payment', {
-        productName: 'Angle Grinder', 
-        amount: 3000 
+        productName: 'Angle Grinder',
+        amount: 3000
       });
 
       const { data } = response;
@@ -80,27 +80,32 @@ const PaymentButton = () => {
   };
 
   return (
-    <Card key={row.id}>
-      <CardMedia
-        component="img"
-        height="200"
-        image={row.Image}
-        alt={row.productName}
-      />
-      <CardContent>
+    <>
+      <div className="productdetailbody">
+          <Card key={row.id} className='productcard'>
+            <CardMedia
+              component="img"
+              height="300"
+              width="300"
+              image={row.Image}
+              alt={row.productName}
+            />
+            <CardContent >
+              <Typography variant='h5' >{row.productName}</Typography>
+              <Typography><b>Model :</b> {row.productModel}</Typography>
+              <Typography>{row.description}</Typography>
+              <Typography><b>Amount :</b> ₹ {row.productPrice}</Typography>
+            </CardContent>
+            <CardActions>
+              <Button onClick={addcard} variant='contained' >Add to Cart</Button>
+              <Button color='primary' variant='contained' onClick={handlePayment} disabled={paymentInProgress}>
+                {paymentInProgress ? 'Processing Payment...' : 'Click to Pay'}
+              </Button>
+            </CardActions>
+          </Card>
+      </div>
+    </>
 
-        <Typography variant='h5'>{row.productName}</Typography>
-        <Typography>Model: {row.productModel}</Typography>
-        <Typography>{row.description}</Typography>
-        <Typography>Price: ₹ {row.productPrice}</Typography>
-      </CardContent>
-      <CardActions>
-        <Button onClick={addcard}variant='contained' >Add to Cart</Button>
-      <Button color='primary' variant='contained' onClick={handlePayment} disabled={paymentInProgress}>
-        {paymentInProgress ? 'Processing Payment...' : 'Click to Pay'}
-      </Button>
-      </CardActions>
-    </Card>
   );
 };
 

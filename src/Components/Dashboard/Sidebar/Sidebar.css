@@ -37,7 +37,6 @@ a{
     transition: 0.2s cubic-bezier(0.6,-0.28,0.735,0.045);
 }
 .link:hover{
-    border-radius: 4px solid whitesmoke;
-    transition: 0.2s cubic-bezier(0.6,-0.28,0.735,0.045);
-    background:1px solid red;
+    font-weight: 600;
+
 }
