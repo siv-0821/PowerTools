@@ -23,9 +23,9 @@ function Home() {
        <div className='home-main'>
         <div className='home-map'>
           {rows.map(item => (
-            <div key={item.id}>
+            <div key={item._id}>
               <Card sx={{width:230}} className="items">
-                <Link to={`/productdetails/${item.id}`}>
+                <Link to={`/productdetails/${item._id}`}>
                   <CardMedia
                     component="img"
                     height="200"

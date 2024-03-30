@@ -1,17 +1,9 @@
-import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@mui/material';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+
 const Navbar = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+  
 
   return (
     <div className='nav-body'>

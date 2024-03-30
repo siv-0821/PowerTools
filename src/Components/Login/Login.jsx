@@ -40,7 +40,7 @@ function Login() {
 
         try {
             const response = await axios.post('http://localhost:9000/auth/login', { email, password });
-            
+            console.log(response);
             Swal.fire('Success!', 'Login successful!', 'success');
             setEmail('');
             setPassword('');
