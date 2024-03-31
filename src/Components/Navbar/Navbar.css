@@ -21,7 +21,9 @@
     display: flex;
    
   }
-  
+  .nav-button{
+    color:whitesmoke;
+  }
   .nav-link > a {
     position: relative;
     padding-bottom: 5px;

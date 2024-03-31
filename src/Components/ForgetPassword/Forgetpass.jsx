@@ -5,6 +5,7 @@ import './Forgetpass.css';
 import { Button, TextField, Typography } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 const MyTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root': {
     '&.Mui-focused fieldset': {
@@ -13,6 +14,7 @@ const MyTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 function Forgetpass() {
+  const navigate=useNavigate()
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
@@ -33,7 +35,7 @@ function Forgetpass() {
       setMessage(`Password reset link sent to ${email}`);
       setEmail('');
       Swal.fire({ title: "success", text: "Email sent with code", icon: "success", timer: 2000 })
-      window.location.href = '/otp'; // Assuming '/otp' is the route to enter OTP
+      navigate('/otp') // Assuming '/otp' is the route to enter OTP
     } catch (error) {
       console.log(email);
       // Swal.fire('Error!', 'Failed to submit form', 'error');

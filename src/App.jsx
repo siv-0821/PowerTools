@@ -21,22 +21,23 @@ import ViewCard from './Components/ViewCards/ViewCards'
 import AuthCheck from './Auth/Auth'
 import PDF from './Components/Receipt/Receipt'
 import PaymentButton from './Components/Productdetails/Productdetails'
+import Address from './Components/Address/Address'
 
 function App() {
   
-
   return (
     <div>
 
       <Routes>
+      <Route path='/' element={<Home />} />
         <Route path='/admin' Component={AdminLogin} />
         <Route path='/signup' Component={Signup} />
-        <Route path='/' element={<Home />} />
         <Route path='viewcard' element={<ViewCard />} />
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
         <Route path='/productdetails/:id' Component={PaymentButton} />
         <Route path='/receipt' Component={PDF} />
+        <Route path='/address' Component={Address} />
         
         <Route Component={AuthCheck}>
           <Route path='/login' Component={Login} />

@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useCart } from '../../DataContext';
 import './Productdetails.css'
+import { Cookies } from 'react-cookie';
 const PaymentButton = () => {
+  const cookie = new Cookies()
   const { id } = useParams();
   const { addToCart } = useCart();
   const [row, setRow] = useState([]);
   const [paymentInProgress, setPaymentInProgress] = useState(false);
+  const accessToken =cookie.get("accessToken")
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,22 +29,27 @@ const PaymentButton = () => {
   }, [id]);
 
   const addcard = () => {
+    if(accessToken){
     addToCart(row); // Add the current item to the cart
     Swal.fire({
       icon: 'success',
       title: 'Added to Cart',
       text: 'Item added Successfully on your Cart!'
     });
-  };
+  }else{
+    navigate('/login')
+  }};
 
   const handlePayment = async () => {
-    try {
+    if(accessToken){
+      navigate('/address')
+    /* try {
       setPaymentInProgress(true);
       const response = await axios.post('http://localhost:9000/payment/payment', {
-        productName: 'Angle Grinder',
-        amount: 3000
+        productName: row.productName,
+        amount: row.productPrice
       });
-
+        
       const { data } = response;
       const options = {
         key: 'rzp_test_OuBzAEm7MsopRx',
@@ -67,6 +76,7 @@ const PaymentButton = () => {
 
       const rzp = new window.Razorpay(options);
       rzp.open();
+      navigate('/receipt')
     } catch (error) {
       console.error('Error initiating payment:', error);
       Swal.fire({
@@ -74,15 +84,21 @@ const PaymentButton = () => {
         title: 'Payment Error',
         text: 'An error occurred while processing payment. Please try again later.'
       });
-    } finally {
+
+    } 
+  finally {
       setPaymentInProgress(false);
-    }
+    } */
+  }
+  else{
+    navigate('/login')
+  }
   };
 
   return (
     <>
       <div className="productdetailbody">
-          <Card key={row.id} className='productcard'>
+          <Card key={row._id} className='productcard'>
             <CardMedia
               component="img"
               height="300"

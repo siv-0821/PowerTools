@@ -6,6 +6,7 @@ import axios from 'axios'
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom'
 const MyTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root': {
     '&.Mui-focused fieldset': {
@@ -14,6 +15,7 @@ const MyTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 function ResetPass() {
+  const navigate=useNavigate()
     const [password, setPassword] = useState()
     const [resetpassword, setResetpassword] = useState()
     const reset = async () => {
@@ -39,8 +41,7 @@ function ResetPass() {
             'Authorization': `Bearer ${token}`
           }})
         Swal.fire({title:"success",text:request.data,icon:"success",timer:2000})
-        
-        window.location.href='/'
+        navigate('/login')
         
       }
       catch(error) {

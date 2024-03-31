@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -9,6 +9,7 @@ import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { TextField, Button, Typography, IconButton, InputAdornment } from '@mui/material';
 import axios from 'axios';
 import styled from '@emotion/styled';
+import { useCookies } from 'react-cookie';
 const MyTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root': {
     '&.Mui-focused fieldset': {
@@ -17,6 +18,8 @@ const MyTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 function Login() {
+    const navigate=useNavigate()
+    const [cookies,setCookies]=useCookies(['accessToken'])
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -44,8 +47,8 @@ function Login() {
             Swal.fire('Success!', 'Login successful!', 'success');
             setEmail('');
             setPassword('');
-            localStorage.getItem('usertoken',response.data.token)
-            window.location.href = '/';
+            setCookies("accessToken",response.data.token)
+            navigate('/')
         } catch (error) {
             Swal.fire('Error!', error.message || 'Something went wrong!', 'error');
         }

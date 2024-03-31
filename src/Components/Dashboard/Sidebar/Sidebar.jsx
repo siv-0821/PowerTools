@@ -22,13 +22,13 @@ const Sidebar = ({ children }) => {
   };
 
   const routes = [
-    { path: '',                name: 'Dashboard' ,            icon:<DashboardIcon/> },
+    { path: '',                name: 'Dashboard' ,        icon:<DashboardIcon/> },
     { path: 'productlist',     name: 'Product List',      icon: <ProductIcon /> },
-    { path: 'order',           name: 'Order to Dealer',            icon: <ShoppingCartIcon /> },
+    { path: 'order',           name: 'Order to Dealer',   icon: <ShoppingCartIcon /> },
     { path: 'orderlist',       name: 'Order List',        icon: <OrdersIcon /> },
     { path: 'productupload',   name: 'Product Upload',    icon: <UploadIcon /> },
     { path: 'feedbackdetails', name: 'Feedback Details',  icon: <ThumbUpAltSharpIcon /> },
-    { path: '/contactdetails',  name: 'Newsletters',   icon: <MarkEmailReadOutlinedIcon/> }
+    { path: 'contactdetails',  name: 'Newsletters',       icon: <MarkEmailReadOutlinedIcon/> }
   ];
 
   return (

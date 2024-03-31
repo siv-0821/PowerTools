@@ -5,6 +5,7 @@ import { Typography, Button } from '@mui/material';
 import { MuiOtpInput } from 'mui-one-time-password-input';
 import axios from 'axios';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 const MyTextField = styled(MuiOtpInput)(({ theme }) => ({
   '& .MuiInputBase-root': {
     '&.Mui-focused fieldset': {
@@ -13,6 +14,7 @@ const MyTextField = styled(MuiOtpInput)(({ theme }) => ({
   },
 }));
 function Otp() {
+  const navigate=useNavigate()
     const [otp, setOtp] = useState('');
     const [resendTime, setResendTime] = useState(60); 
   
@@ -30,7 +32,7 @@ function Otp() {
           setOtp('');
           Swal.fire({title:"success",text:response.data.message,icon:"success",timer:2000})
           localStorage.setItem("resetToken",response.data.resetToken)
-          window.location.href ='/resetpass' // Assuming '/otp' is the route to enter OTP
+          navigate('/resetpass') // Assuming '/otp' is the route to enter OTP
       } catch (error) {
         
         // Swal.fire('Error!', 'Failed to submit form', 'error');
