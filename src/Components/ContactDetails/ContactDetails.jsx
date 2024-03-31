@@ -27,7 +27,6 @@ function ContactDetails() {
     }, [])
     return (
         <>
-            
             <div className="contactdetailsbody" >
                 <div className="messages">
                     {rows.map((row, index) => (
