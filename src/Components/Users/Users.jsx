@@ -5,12 +5,13 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { styled } from '@mui/material/styles';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import { Typography, Table, TableContainer, TableHead, TableBody, TableRow, Paper } from '@mui/material';
 
 function Dashboard() {
-  const [newsletterCount, setNewsletterCount] = useState(0);
+  const [productCount, setProductCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const [orderCount, setOrderCount] = useState(0);
   const [feedbackCount, setFeedbackCount] = useState(0);
@@ -37,12 +38,12 @@ function Dashboard() {
   }));
   useEffect(() => {
     // Fetch newsletter count from backend API
-    axios.get('http://localhost:9000/newsletter/newsletter')
+    axios.get('http://localhost:9000/product/productCount')
       .then(response => {
-        setNewsletterCount(response.data.count);
+        setProductCount(response.data.count);
       })
       .catch(error => {
-        console.error('Error fetching newsletter count:', error);
+        console.error('Error fetching product count:', error);
       });
 
     // Fetch user count from backend API
@@ -96,9 +97,9 @@ function Dashboard() {
           <Typography variant="h4">Orders</Typography>
         </div>
         <div className="count-card">
-          <MailOutlineIcon style={{ fontSize: '50px' }} />
-          <Typography variant='h2'>{newsletterCount}</Typography>
-          <Typography variant="h4">Newsletters</Typography>
+          <Inventory2Icon style={{ fontSize: '50px' }} />
+          <Typography variant='h2'>{productCount}</Typography>
+          <Typography variant="h4">Products</Typography>
         </div>
         <div className="count-card">
           <ThumbUpOffAltIcon style={{ fontSize: '50px' }} />

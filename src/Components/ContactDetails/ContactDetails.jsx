@@ -9,20 +9,22 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 function ContactDetails() {
+    var data= []
     const [rows, setRows] = useState([])
     useEffect(() => {
         const getdata = async () => {
             try {
-                const response = await axios.get('http://localhost:9000/newsletter/newsletter')
-                setRows(response.data.rev)
-            }
-            catch (error) {
+                const response = await axios.get('http://localhost:9000/newsletter/newsletter');
+                const data = response.data.newsletters;
+                setRows(data);
+                
+            } catch (error) {
                 Swal.fire('Error!', error.message || 'Something went wrong!', 'error');
             }
-        }
-        getdata()
-    }, [])
+        };
 
+        getdata();
+    }, [])
     return (
         <>
             
