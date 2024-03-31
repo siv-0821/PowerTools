@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Users.css'; // Import CSS file for styling
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import { styled } from '@mui/material/styles';
-import Inventory2Icon from '@mui/icons-material/Inventory2';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { Typography, Table, TableContainer, TableHead, TableBody, TableRow, Paper } from '@mui/material';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import { styled } from '@mui/material/styles';
 
 function Dashboard() {
   const [productCount, setProductCount] = useState(0);
@@ -36,6 +35,7 @@ function Dashboard() {
       border: 0,
     },
   }));
+
   useEffect(() => {
     // Fetch newsletter count from backend API
     axios.get('http://localhost:9000/product/productCount')
@@ -74,9 +74,9 @@ function Dashboard() {
       });
 
     // Fetch users from backend API
-    axios.get('http://localhost:9000/auth/getAllUsers')
+    axios.get('http://localhost:9000/auth/getuser')
       .then(response => {
-        setUsers(response.data.users);
+        setUsers(response.data);
       })
       .catch(error => {
         console.error('Error fetching users:', error);
@@ -113,19 +113,20 @@ function Dashboard() {
           <Table>
             <TableHead>
               <StyledTableRow>
-                <StyledTableCell align='center'>ID</StyledTableCell>
-                <StyledTableCell align='center'>User Name</StyledTableCell>
-                <StyledTableCell align='center'>Email</StyledTableCell>
-                <StyledTableCell align='center'>Created at</StyledTableCell>
+                <StyledTableCell >ID</StyledTableCell>
+                <StyledTableCell >User Name</StyledTableCell>
+                <StyledTableCell >Email</StyledTableCell>
+                <StyledTableCell >Created at</StyledTableCell>
                 {/* Add more table headings as needed */}
               </StyledTableRow>
             </TableHead>
             <TableBody>
               {users.map(user => (
                 <TableRow key={user._id}>
-                  <StyledTableCell align='center'>{user._id}</StyledTableCell>
+                  <StyledTableCell >{user._id}</StyledTableCell>
                   <StyledTableCell>{user.username}</StyledTableCell>
                   <StyledTableCell>{user.email}</StyledTableCell>
+                  <StyledTableCell>{new Date(user.createdAt).toLocaleDateString()}</StyledTableCell>
                   {/* Add more table cells for other user details */}
                 </TableRow>
               ))}
