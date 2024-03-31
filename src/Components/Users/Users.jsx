@@ -126,7 +126,7 @@ function Dashboard() {
                   <StyledTableCell >{user._id}</StyledTableCell>
                   <StyledTableCell>{user.username}</StyledTableCell>
                   <StyledTableCell>{user.email}</StyledTableCell>
-                  <StyledTableCell>{new Date(user.createdAt).toLocaleDateString()}</StyledTableCell>
+                  <StyledTableCell>{user.createdAt}</StyledTableCell>
                   {/* Add more table cells for other user details */}
                 </TableRow>
               ))}

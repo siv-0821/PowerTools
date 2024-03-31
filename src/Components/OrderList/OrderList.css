@@ -24,7 +24,9 @@
        text-align: center;
        overflow-y: auto;
 }
-
+.no{
+    border: 1px solid black;
+}
 .from {
     width: 100%;
     display: flex;
