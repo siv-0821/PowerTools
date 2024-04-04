@@ -1,7 +1,7 @@
 .count-container {
 
     display: flex;
-    margin-top: -350px;
+    margin-top: -100px;
     justify-content: space-between;
   }
   
@@ -26,4 +26,7 @@
   .count-card:last-child {
     margin-right: 0;
   }
-  
+  .user-table{
+    overflow-y: scroll;
+    height: 400px;
+  }

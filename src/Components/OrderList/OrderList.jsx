@@ -34,6 +34,7 @@ function OrderList() {
 
       <div className='orderListBody'>
         <div className='orderList'>
+        <Typography variant="h3" className='heading'>Order List</Typography><br/><br/>
           {rows.map((row, index) => (
             <Accordion className="no" key={`id${index}`}>
               <AccordionSummary

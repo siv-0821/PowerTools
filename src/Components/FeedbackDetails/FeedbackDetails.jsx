@@ -28,6 +28,7 @@ function FeedbackDetails() {
             
             <div className="feedbackdetailsbody">
                 <div className="feedbacks">
+                <Typography variant="h3" className='heading'>Feedbacks</Typography><br/><br/>
                     {rows.map((row, index) => (
                         <Accordion className="no" key={`id${index}`}>
                             <AccordionSummary

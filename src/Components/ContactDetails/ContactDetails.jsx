@@ -29,6 +29,7 @@ function ContactDetails() {
         <>
             <div className="contactdetailsbody" >
                 <div className="messages">
+                <Typography variant="h3" className='heading'>Contact Details</Typography><br/><br/>
                     {rows.map((row, index) => (
                         <Accordion className="no" key={`id${index}`}>
                             <AccordionSummary
