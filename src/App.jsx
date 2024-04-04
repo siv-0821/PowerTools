@@ -22,9 +22,12 @@ import AuthCheck from './Auth/Auth'
 import PDF from './Components/Receipt/Receipt'
 import PaymentButton from './Components/Productdetails/Productdetails'
 import Address from './Components/Address/Address'
+import { Cookies } from 'react-cookie';
+import { useCookies } from 'react-cookie'
 
 function App() {
-  
+  const[cookieId,setCookieId]=useCookies()
+  const cookie =new Cookies()
   return (
     <div>
 
@@ -32,18 +35,19 @@ function App() {
       <Route path='/' element={<Home />} />
         <Route path='/admin' Component={AdminLogin} />
         <Route path='/signup' Component={Signup} />
-        <Route path='viewcard' element={<ViewCard />} />
+        <Route path='viewcard' element={<ViewCard cookieId={cookie.get('cookieid')}  />} />
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
-        <Route path='/productdetails/:id' Component={PaymentButton} />
+        <Route path='/productdetails/:id' element={<PaymentButton cookieId={cookie.get('cookieid')}/>} />
         <Route path='/receipt' Component={PDF} />
         <Route path='/address' Component={Address} />
         
         <Route Component={AuthCheck}>
-          <Route path='/login' Component={Login} />
+          <Route path='/login' element={<Login setCookieId={setCookieId}/> } />
           <Route path='/forget' Component={ForgetPass} />
           <Route path='/otp' Component={Otp} />
           <Route path='/resetpass' Component={ResetPass} />
+          
         </Route>
 
         <Route path='/dashboard' Component={Dashboard} >

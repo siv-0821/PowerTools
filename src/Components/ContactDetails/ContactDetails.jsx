@@ -9,7 +9,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 function ContactDetails() {
-    var data= []
+   
     const [rows, setRows] = useState([])
     useEffect(() => {
         const getdata = async () => {

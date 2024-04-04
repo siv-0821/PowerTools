@@ -10,6 +10,7 @@ import { TextField, Button, Typography, IconButton, InputAdornment } from '@mui/
 import axios from 'axios';
 import styled from '@emotion/styled';
 import { useCookies } from 'react-cookie';
+
 const MyTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root': {
     '&.Mui-focused fieldset': {
@@ -17,9 +18,10 @@ const MyTextField = styled(TextField)(({ theme }) => ({
     },
   },
 }));
-function Login() {
+
+function Login({ setCookieId }) {
     const navigate=useNavigate()
-    const [cookies,setCookies]=useCookies(['accessToken'])
+    const [cookies, setCookies] = useCookies(['asscessToken','id','username']);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -43,12 +45,14 @@ function Login() {
 
         try {
             const response = await axios.post('http://localhost:9000/auth/login', { email, password });
-            console.log(response);
             Swal.fire('Success!', 'Login successful!', 'success');
             setEmail('');
             setPassword('');
-            setCookies("accessToken",response.data.token)
-            navigate('/')
+            setCookies("accessToken", response.data.token);
+            setCookies("username", response.data.user.username);
+            setCookies("id", response.data.user._id);
+            setCookieId("cookieid",response.data.user._id); 
+            navigate('/')// Pass userId to parent component
         } catch (error) {
             Swal.fire('Error!', error.message || 'Something went wrong!', 'error');
         }
@@ -61,6 +65,7 @@ function Login() {
     const handleMouseDownPassword = event => {
         event.preventDefault();
     };
+
     return (
         <div id='login-body'>
             <div className='login'>
@@ -124,4 +129,5 @@ function Login() {
         </div>
     );
 }
-export default Login
+
+export default Login;

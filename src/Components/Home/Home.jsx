@@ -10,7 +10,7 @@ function Home() {
    const [rows, setRow] = useState([])
   useEffect(()=>{
     const fetchdata = async () => {
-      const response =await axios.get("http://localhost:9000/product");
+      const response =await axios.get("http://localhost:9000/product/all");
       console.log(response.data);
       setRow(response.data)
     }
@@ -30,7 +30,7 @@ function Home() {
                     component="img"
                     height="200"
                     width='200'
-                    image={item.Image}
+                    image={item.filename}
                     alt={item.productName}
                   />
                   <CardContent>

@@ -11,7 +11,7 @@ const AuthCheck = () => {
             if(!token) return setLoading(false)
             try{
             const response = await axios.post(
-                "http://localhost:9000/auth/",{},
+                "http://localhost:9000/admin/login",{},
                 {
                   headers: {
                     Authorization: `Bearer ${token}`,

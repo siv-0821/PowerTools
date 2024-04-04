@@ -4,6 +4,7 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [userData,setUserDetails] = useState({})
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
@@ -33,6 +34,8 @@ export const DataProvider = ({ children }) => {
         updateCartItemQuantity,
         removeItemFromCart,
         clearCart,
+        userData,
+        setUserDetails
       }}
     >
       {children}

@@ -8,6 +8,8 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { TextField, Button, Typography, IconButton, InputAdornment } from '@mui/material';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 const MyTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root': {
@@ -18,6 +20,8 @@ const MyTextField = styled(TextField)(({ theme }) => ({
 }));
 
 function AdminLogin() {
+  const navigate=useNavigate()
+  const [cookie,setCookie]=useCookies(['admintoken'])
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +33,7 @@ function AdminLogin() {
       Swal.fire("Error", "Enter a valid email address", 'error');
       return;
     }
-  
+   
     // Validate password length
     if (password.length < 8) {
       Swal.fire("Error", "Password must be at least 8 characters long", 'error');
@@ -37,14 +41,23 @@ function AdminLogin() {
     }
   
     try {
-      const response = await axios.post('http://localhost:9000/', { email, password });
+      const response = await axios.post('http://localhost:9000/admin/login', { email, password });
       Swal.fire('Success!', 'Login successful!', 'success');
       setEmail('');
       setPassword('');
-      localStorage.getItem('admintoken', response.data.token);
-      window.location.href = '/dashboard';
-    } catch (err) {
-      Swal.fire('Error', 'Invalid credentials', 'error');
+      setCookie('admintoken', response.data.token);
+      navigate('/dashboard');
+    } catch (error) {
+      if (error.response && error.response.status) {
+        Swal.fire({
+          title: error.response.statusText,
+          text: error.response.data,
+          icon: "error",
+        });
+      } else {
+        Swal.fire({ title: "Error", text: error.message, icon: "error" });
+      }
+      
     }
   };
   

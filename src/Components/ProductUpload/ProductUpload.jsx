@@ -10,16 +10,16 @@ function ProductUpload() {
     const [productModel, setproductModel] = useState()
     const [productPrice, setproductPrice] = useState()
     const [description, setdescription] = useState()
-    const [Image, setImage] = useState()
+    const [filename, setFilename] = useState()
 
     /* const imasgee = async(e) => {
         const data=e.target.files[0]
-        setimage(data)
+        setfilename(data)
         
         try{
-            const imageData=new ImageData()
-            imageData.append('image',data)
-            const imagefile=await axios.post('/assuts/img',imageData)
+            const filenameData=new filenameData()
+            filenameData.append('filename',data)
+            const filenamefile=await axios.post('/assuts/img',filenameData)
             console.log("Success");
         }
         catch{
@@ -29,18 +29,18 @@ function ProductUpload() {
     
  */
     const Upload = async () => {
-        if (!Image || !productName || !productModel || !productPrice || !description) {
+        if (!filename || !productName || !productModel || !productPrice || !description) {
             Swal.fire('Error', 'Fill all the fields', 'error')
             return
         }
         try {
-            const response = await axios.post('http://localhost:9000/product', { productName, productModel, productPrice, description,Image })
+            const response = await axios.post('http://localhost:9000/product/upload', { productName, productModel, productPrice, description,filename })
             Swal.fire('success', 'Uploaded Successfully', 'success')
             setproductName('')
             setproductModel('')
             setdescription('')
             setproductPrice('')
-            setImage('')
+            setFilename('')
         }
         catch (error) {
             Swal.fire('Error',"Can't Upload",'error')
@@ -58,9 +58,9 @@ function ProductUpload() {
                                <Button 
                                variant='contained' 
                                color='primary'
-                               value={Image}
-                               onChange={(e)=>setImage(e.target.value)} 
-                               startIcon={<UploadFileIcon />}><label><input type='file' hidden/>Upload Image</label></Button>
+                               value={filename}
+                               onChange={(e)=>setFilename(e.target.value)} 
+                               startIcon={<UploadFileIcon />}><label><input type='file' hidden/>Upload filename</label></Button>
                                 
                                 <TextField className='pr-name' autoComplete='off' label='Product Name' value={productName} onChange={(e) => setproductName(e.target.value)} />
                                 <TextField className='pr-model' autoComplete='off' label='Product Model' value={productModel} onChange={(e) => setproductModel(e.target.value)} />
