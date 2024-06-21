@@ -22,10 +22,11 @@ const MyTextField = styled(TextField)(({ theme }) => ({
     },
 }));
 
-function Address() {
+function Address({cookieId}) {
+
     const { state } = useLocation();
-    const { productName, productPrice } = state || {};
-    const navigate = useNavigate();
+    const { productName, productPrice,Quantity } = state || {};
+    const navigate = useNavigate()
     const [paymentInProgress, setPaymentInProgress] = useState(false);
     const [name, setName] = useState('');
     const [contactNumber, setMobileNumber] = useState('');
@@ -54,13 +55,13 @@ function Address() {
 
             console.log('Address details:', { name, contactNumber, pinCode, doorNo, area, landmark, city });
             Swal.fire('Success', 'Address saved successfully', 'success');
-            setName('');
-            setArea('');
-            setDoorNo('');
-            setLandmark('');
-            setMobileNumber('');
-            setPinCode('');
-            setTown('');
+            setName('')
+            setArea('')
+            setDoorNo('')
+            setLandmark('')
+            setMobileNumber('')
+            setPinCode('')
+            setTown('')
             setAddressSubmitted(true); // Set addressSubmitted to true upon successful submission
         } catch (error) {
             console.error('Error saving address:', error.message);
@@ -72,51 +73,38 @@ function Address() {
         if (addressSubmitted) { // Check if address is submitted and user is authenticated
             try {
                 setPaymentInProgress(true);
+                const response = await axios.post('http://localhost:9000/payment/payment', {
+                    customerID:cookieId,
+                    productName: state.productName,
+                    amount: state.productPrice,
+                    address: {
+                        name,
+                        contactNumber,
+                        pinCode,
+                        doorNo,
+                        area,
+                        landmark,
+                        city
+                    }
+                });
 
+                const { data } = response;
                 const options = {
                     key: 'rzp_test_OuBzAEm7MsopRx',
-                    amount: state.productPrice,
-                    currency: 'INR',
-                    order_id: 'order_EHY2YUKwdbwFzm', // Sample order ID, replace with actual order ID
-                    name: state.productName,
-                    description: `Payment for ${state.productName}`,
+                    amount: data.amount,
+                    currency: data.currency,
+                    order_id: data.id,
+                    name: data.notes.productName,
+                    description: `Payment for ${data.notes.productName}`,
                     handler: function (response) {
-                        const paymentData = {
-                            productName: state.productName,
-                            amount: state.productPrice,
-                            address: {
-                                name,
-                                contactNumber,
-                                pinCode,
-                                doorNo,
-                                area,
-                                landmark,
-                                city
-                            },
-                            paymentID: response.razorpay_payment_id
-                        };
-
-                        // Send payment data to the payment URL
-                        axios.post('http://localhost:9000/payment/payment', paymentData)
-                            .then(response => {
-                                console.log('Payment successful:', response.data);
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Payment Successful',
-                                    text: `Payment ID: ${response.razorpay_payment_id}`
-                                }).then(() => {
-                                    // Navigate to receipt page after payment success
-                                    navigate('/receipt')
-                                });
-                            })
-                            .catch(error => {
-                                console.error('Error processing payment:', error);
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Payment Error',
-                                    text: 'An error occurred while processing payment. Please try again later.'
-                                });
-                            });
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Payment Successful',
+                            text: `Payment ID: ${response.razorpay_payment_id}`
+                        }).then(() => {
+                            // Navigate to receipt page after payment success
+                            navigate('/receipt',{state:{productName,productPrice,Quantity}})
+                        });
                     },
                     prefill: {
                         name: 'John Doe',

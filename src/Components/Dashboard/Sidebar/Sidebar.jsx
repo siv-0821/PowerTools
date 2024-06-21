@@ -14,12 +14,12 @@ import {
   ListAlt as OrdersIcon 
 } from '@mui/icons-material';
 import './Sidebar.css';
-import { useCookies } from 'react-cookie';
+import { Cookies } from 'react-cookie';
 
 const Sidebar = ({ children }) => {
   const navigate=useNavigate()
-  const [cookies, removeCookie] = useCookies();
-  const [isLoggedIn, setIsLoggedIn] = useState(!!cookies.admintoken);
+  const cookie = new Cookies();
+  const [isLoggedIn, setIsLoggedIn] = useState(!!cookie.get('admintoken'));
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -27,7 +27,7 @@ const Sidebar = ({ children }) => {
   };
 
   const logout = () => {
-    removeCookie('admintoken');
+    cookie.remove('admintoken');
     setIsLoggedIn(false);
     // Navigate to the admin login page
     navigate('/admin'); // Adjust the path as per your route setup

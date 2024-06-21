@@ -30,9 +30,10 @@ function Home() {
                     component="img"
                     height="200"
                     width='200'
-                    image={item.filename}
+                    image={`http://localhost:9000/uploads/${item.fileName}`}
                     alt={item.productName}
                   />
+                  {console.log(item.fileName)}
                   <CardContent>
                     <Typography style={{fontSize:"24px"}} className="productName">{item.productName}</Typography>
                     <Typography style={{fontSize:"18px"}} className='productModel'><b>Model :</b> {item.productModel}</Typography>

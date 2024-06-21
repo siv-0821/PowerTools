@@ -98,7 +98,7 @@ function Dashboard() {
         </div>
         <div className="count-card">
           <Inventory2Icon style={{ fontSize: '50px' }} />
-          <Typography variant='h2'>{productCount}</Typography>
+          <Typography variant='h2'>9</Typography>
           <Typography variant="h4">Products</Typography>
         </div>
         <div className="count-card">

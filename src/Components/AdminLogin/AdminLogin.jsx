@@ -79,6 +79,7 @@ function AdminLogin() {
         <div className='underline'></div>
         <div className='field'>
           <MyTextField
+          autoFocus
             id="login-email"
             autoComplete='off'
             label="Email"

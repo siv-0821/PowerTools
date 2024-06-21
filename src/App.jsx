@@ -19,6 +19,7 @@ import AdminLogin from './Components/AdminLogin/AdminLogin'
 import './App.css'
 import ViewCard from './Components/ViewCards/ViewCards'
 import AuthCheck from './Auth/Auth'
+import AdminAuthCheck from './Auth/AdminAuthCheck'
 import PDF from './Components/Receipt/Receipt'
 import PaymentButton from './Components/Productdetails/Productdetails'
 import Address from './Components/Address/Address'
@@ -33,23 +34,23 @@ function App() {
 
       <Routes>
       <Route path='/' element={<Home />} />
-        <Route path='/admin' Component={AdminLogin} />
         <Route path='/signup' Component={Signup} />
         <Route path='viewcard' element={<ViewCard cookieId={cookie.get('cookieid')}  />} />
         <Route path='/contact' Component={Contact} />
         <Route path='/feedback' Component={Feedback} />
         <Route path='/productdetails/:id' element={<PaymentButton cookieId={cookie.get('cookieid')}/>} />
         <Route path='/receipt' Component={PDF} />
-        <Route path='/address' Component={Address} />
+        <Route path='/address' element={<Address cookieId={cookie.get('cookieid')}/>} />
         
         <Route Component={AuthCheck}>
           <Route path='/login' element={<Login setCookieId={setCookieId}/> } />
           <Route path='/forget' Component={ForgetPass} />
           <Route path='/otp' Component={Otp} />
           <Route path='/resetpass' Component={ResetPass} />
-          
         </Route>
-
+        <Route path='/admin' Component={AdminAuthCheck}>
+          <Route path='' Component={AdminLogin} />
+        </Route>
         <Route path='/dashboard' Component={Dashboard} >
           <Route path='' Component={Users} />
           <Route path='productlist' Component={ProductList} />

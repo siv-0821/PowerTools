@@ -34,7 +34,7 @@ function ProductList() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:9000/product");
+      const response = await axios.get("http://localhost:9000/product/all");
       if (response.status === 200) {
         setRows(response.data);
       } else {

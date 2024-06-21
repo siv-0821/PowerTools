@@ -71,7 +71,7 @@ function ViewCart({ cookieId }) {
               <CardMedia
                 component="img"
                 height="200"
-                image={item.fileName} // Corrected from 'item.Image'
+                image={`http://localhost:9000/uploads/${item.fileName}`} // Corrected from 'item.Image'
                 alt={item.productName}
               />
               <CardContent>
@@ -90,7 +90,7 @@ function ViewCart({ cookieId }) {
                   variant='contained'
                   component={Link}
                   to="/address"
-                  state={{ productName: item.productName, productPrice: item.totalPrice }}
+                  state={{ productName: item.productName, productPrice: item.totalPrice,Quantity:item.quantity }}
                 >
                   Buy Now
                 </Button>
